@@ -18,5 +18,10 @@ namespace TMP2019.Data
         public DbSet<TMP2019.Models.DataModels.Company> Company { get; set; }
         public DbSet<TMP2019.Models.DataModels.District> District { get; set; }
         public DbSet<TMP2019.Models.DataModels.PersonType> PersonType { get; set; }
+        public DbSet<TMP2019.Models.DataModels.Match> Match { get; set; }
+        public DbSet<TMP2019.Models.DataModels.Arena> Arena { get; set; }
+        public DbSet<TMP2019.Models.DataModels.MatchCategory> MatchCategory { get; set; }
+        public DbSet<TMP2019.Models.DataModels.Receipt> Receipt { get; set; }
+        public DbSet<TMP2019.Models.DataModels.Team> Team { get; set; }
     }
 }

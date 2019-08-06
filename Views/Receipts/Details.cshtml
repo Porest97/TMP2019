@@ -1,0 +1,174 @@
+﻿@model TMP2019.Models.DataModels.Receipt
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Receipt</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Match)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Match.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HD1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HD1.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HD2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HD2.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LD1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LD1.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LD2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LD2.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HD1Fee)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HD1Fee)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HD1TravelKost)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HD1TravelKost)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HD1Alowens)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HD1Alowens)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HD1LateGameKost)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HD1LateGameKost)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HD1TotalFee)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HD1TotalFee)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HD2Fee)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HD2Fee)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HD2TravelKost)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HD2TravelKost)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HD2Alowens)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HD2Alowens)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HD2LateGameKost)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HD2LateGameKost)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HD2TotalFee)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HD2TotalFee)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LD1Fee)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LD1Fee)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LD1TravelKost)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LD1TravelKost)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LD1Alowens)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LD1Alowens)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LD1LateGameKost)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LD1LateGameKost)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LD1TotalFee)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LD1TotalFee)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LD2Fee)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LD2Fee)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LD2TravelKost)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LD2TravelKost)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LD2Alowens)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LD2Alowens)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LD2LateGameKost)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LD2LateGameKost)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LD2TotalFee)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LD2TotalFee)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GameTotalKost)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GameTotalKost)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
