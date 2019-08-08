@@ -55,14 +55,14 @@ namespace TMP2019.Controllers.AdminControllers
         // GET: Matches/Create
         public IActionResult Create()
         {
-            ViewData["ArenaId"] = new SelectList(_context.Set<Arena>(), "Id", "Id");
-            ViewData["TeamId1"] = new SelectList(_context.Set<Team>(), "Id", "Id");
-            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "Id");
-            ViewData["PersonId1"] = new SelectList(_context.Person, "Id", "Id");
-            ViewData["TeamId"] = new SelectList(_context.Set<Team>(), "Id", "Id");
-            ViewData["PersonId2"] = new SelectList(_context.Person, "Id", "Id");
-            ViewData["PersonId3"] = new SelectList(_context.Person, "Id", "Id");
-            ViewData["MatchCategoryId"] = new SelectList(_context.Set<MatchCategory>(), "Id", "Id");
+            ViewData["ArenaId"] = new SelectList(_context.Set<Arena>(), "Id", "ArenaName");
+            ViewData["TeamId1"] = new SelectList(_context.Set<Team>(), "Id", "TeamName");
+            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FullName");
+            ViewData["PersonId1"] = new SelectList(_context.Person, "Id", "FullName");
+            ViewData["TeamId"] = new SelectList(_context.Set<Team>(), "Id", "TeamName");
+            ViewData["PersonId2"] = new SelectList(_context.Person, "Id", "FullName");
+            ViewData["PersonId3"] = new SelectList(_context.Person, "Id", "FullName");
+            ViewData["MatchCategoryId"] = new SelectList(_context.Set<MatchCategory>(), "Id", "MatchCategoryName");
             return View();
         }
 
@@ -79,14 +79,14 @@ namespace TMP2019.Controllers.AdminControllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ArenaId"] = new SelectList(_context.Set<Arena>(), "Id", "Id", match.ArenaId);
-            ViewData["TeamId1"] = new SelectList(_context.Set<Team>(), "Id", "Id", match.TeamId1);
-            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "Id", match.PersonId);
-            ViewData["PersonId1"] = new SelectList(_context.Person, "Id", "Id", match.PersonId1);
-            ViewData["TeamId"] = new SelectList(_context.Set<Team>(), "Id", "Id", match.TeamId);
-            ViewData["PersonId2"] = new SelectList(_context.Person, "Id", "Id", match.PersonId2);
-            ViewData["PersonId3"] = new SelectList(_context.Person, "Id", "Id", match.PersonId3);
-            ViewData["MatchCategoryId"] = new SelectList(_context.Set<MatchCategory>(), "Id", "Id", match.MatchCategoryId);
+            ViewData["ArenaId"] = new SelectList(_context.Set<Arena>(), "Id", "ArenaName", match.ArenaId);
+            ViewData["TeamId1"] = new SelectList(_context.Set<Team>(), "Id", "TeamName", match.TeamId1);
+            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FullName", match.PersonId);
+            ViewData["PersonId1"] = new SelectList(_context.Person, "Id", "FullName", match.PersonId1);
+            ViewData["TeamId"] = new SelectList(_context.Set<Team>(), "Id", "TeamName", match.TeamId);
+            ViewData["PersonId2"] = new SelectList(_context.Person, "Id", "FullName", match.PersonId2);
+            ViewData["PersonId3"] = new SelectList(_context.Person, "Id", "FullName", match.PersonId3);
+            ViewData["MatchCategoryId"] = new SelectList(_context.Set<MatchCategory>(), "Id", "MatchCategoryName", match.MatchCategoryId);
             return View(match);
         }
 
@@ -103,14 +103,14 @@ namespace TMP2019.Controllers.AdminControllers
             {
                 return NotFound();
             }
-            ViewData["ArenaId"] = new SelectList(_context.Set<Arena>(), "Id", "Id", match.ArenaId);
-            ViewData["TeamId1"] = new SelectList(_context.Set<Team>(), "Id", "Id", match.TeamId1);
-            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "Id", match.PersonId);
-            ViewData["PersonId1"] = new SelectList(_context.Person, "Id", "Id", match.PersonId1);
-            ViewData["TeamId"] = new SelectList(_context.Set<Team>(), "Id", "Id", match.TeamId);
-            ViewData["PersonId2"] = new SelectList(_context.Person, "Id", "Id", match.PersonId2);
-            ViewData["PersonId3"] = new SelectList(_context.Person, "Id", "Id", match.PersonId3);
-            ViewData["MatchCategoryId"] = new SelectList(_context.Set<MatchCategory>(), "Id", "Id", match.MatchCategoryId);
+            ViewData["ArenaId"] = new SelectList(_context.Set<Arena>(), "Id", "ArenaName", match.ArenaId);
+            ViewData["TeamId1"] = new SelectList(_context.Set<Team>(), "Id", "TeamName", match.TeamId1);
+            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FullName", match.PersonId);
+            ViewData["PersonId1"] = new SelectList(_context.Person, "Id", "FullName", match.PersonId1);
+            ViewData["TeamId"] = new SelectList(_context.Set<Team>(), "Id", "TeamName", match.TeamId);
+            ViewData["PersonId2"] = new SelectList(_context.Person, "Id", "FullName", match.PersonId2);
+            ViewData["PersonId3"] = new SelectList(_context.Person, "Id", "FullName", match.PersonId3);
+            ViewData["MatchCategoryId"] = new SelectList(_context.Set<MatchCategory>(), "Id", "MatchCategoryName", match.MatchCategoryId);
             return View(match);
         }
 
@@ -146,14 +146,14 @@ namespace TMP2019.Controllers.AdminControllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ArenaId"] = new SelectList(_context.Set<Arena>(), "Id", "Id", match.ArenaId);
-            ViewData["TeamId1"] = new SelectList(_context.Set<Team>(), "Id", "Id", match.TeamId1);
-            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "Id", match.PersonId);
-            ViewData["PersonId1"] = new SelectList(_context.Person, "Id", "Id", match.PersonId1);
-            ViewData["TeamId"] = new SelectList(_context.Set<Team>(), "Id", "Id", match.TeamId);
-            ViewData["PersonId2"] = new SelectList(_context.Person, "Id", "Id", match.PersonId2);
-            ViewData["PersonId3"] = new SelectList(_context.Person, "Id", "Id", match.PersonId3);
-            ViewData["MatchCategoryId"] = new SelectList(_context.Set<MatchCategory>(), "Id", "Id", match.MatchCategoryId);
+            ViewData["ArenaId"] = new SelectList(_context.Set<Arena>(), "Id", "ArenaName", match.ArenaId);
+            ViewData["TeamId1"] = new SelectList(_context.Set<Team>(), "Id", "TeamName", match.TeamId1);
+            ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FullName", match.PersonId);
+            ViewData["PersonId1"] = new SelectList(_context.Person, "Id", "FullName", match.PersonId1);
+            ViewData["TeamId"] = new SelectList(_context.Set<Team>(), "Id", "TeamName", match.TeamId);
+            ViewData["PersonId2"] = new SelectList(_context.Person, "Id", "FullName", match.PersonId2);
+            ViewData["PersonId3"] = new SelectList(_context.Person, "Id", "FullName", match.PersonId3);
+            ViewData["MatchCategoryId"] = new SelectList(_context.Set<MatchCategory>(), "Id", "MatchCategoryName", match.MatchCategoryId);
             return View(match);
         }
 

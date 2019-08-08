@@ -11,9 +11,9 @@ namespace TMP2019.Models.DataModels
     {
         public int Id { get; set; }
 
-        [Display(Name = "Match Cat")]
+        
         public int? MatchCategoryId { get; set; }
-        [Display(Name = "Match Cat")]
+        [Display(Name = "Category")]
         [ForeignKey("MatchCategoryId")]
         public MatchCategory MatchCategory { get; set; }
 
@@ -23,21 +23,21 @@ namespace TMP2019.Models.DataModels
         [Display(Name = "Date&Time")]
         public DateTime MatchDateTime { get; set; }
 
-        [Display(Name = "Arena")]
+        
         public int? ArenaId { get; set; }
         [Display(Name = "Arena")]
         [ForeignKey("ArenaId")]
         public Arena Arena { get; set; }
 
-        [Display(Name = "Home Team")]
+        
         public int? TeamId { get; set; }
-        [Display(Name = "Home Team")]
+        [Display(Name = "Home")]
         [ForeignKey("TeamId")]
         public Team HomeTeam { get; set; }
 
-        [Display(Name = "Away Team")]
+        
         public int? TeamId1 { get; set; }
-        [Display(Name = "Away Team")]
+        [Display(Name = "Away")]
         [ForeignKey("TeamId1")]
         public Team AwayTeam { get; set; }
 
@@ -49,25 +49,25 @@ namespace TMP2019.Models.DataModels
         [Display(Name = "Score")]
         public string Result { get { return string.Format("{0} {1} {2}", HomeTeamScore, "-", AwayTeamScore); } }
 
-        [Display(Name = "HD")]
+        
         public int? PersonId { get; set; }
         [Display(Name = "HD")]
         [ForeignKey("PersonId")]
         public Person HD1 { get; set; }
 
-        [Display(Name = "HD")]
+        
         public int? PersonId1 { get; set; }
         [Display(Name = "HD")]
         [ForeignKey("PersonId1")]
         public Person HD2 { get; set; }
 
-        [Display(Name = "LD")]
+        
         public int? PersonId2 { get; set; }
         [Display(Name = "LD")]
         [ForeignKey("PersonId2")]
         public Person LD1 { get; set; }
 
-        [Display(Name = "LD")]
+        
         public int? PersonId3 { get; set; }
         [Display(Name = "LD")]
         [ForeignKey("PersonId3")]

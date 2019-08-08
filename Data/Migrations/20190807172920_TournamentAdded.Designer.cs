@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TMP2019.Data;
 
 namespace TMP2019.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190807172920_TournamentAdded")]
+    partial class TournamentAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -184,50 +186,6 @@ namespace TMP2019.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("TMP2019.Models.DataModels.Activity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ActivityDescription");
-
-                    b.Property<string>("ActivityName");
-
-                    b.Property<int?>("ActivityTypeId");
-
-                    b.Property<int?>("ArenaId");
-
-                    b.Property<int?>("CampId");
-
-                    b.Property<DateTime>("EndDateTime");
-
-                    b.Property<DateTime>("StartDateTime");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ActivityTypeId");
-
-                    b.HasIndex("ArenaId");
-
-                    b.HasIndex("CampId");
-
-                    b.ToTable("Activity");
-                });
-
-            modelBuilder.Entity("TMP2019.Models.DataModels.ActivityType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ActivityTypeName");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ActivityType");
-                });
-
             modelBuilder.Entity("TMP2019.Models.DataModels.Arena", b =>
                 {
                     b.Property<int>("Id")
@@ -239,29 +197,6 @@ namespace TMP2019.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Arena");
-                });
-
-            modelBuilder.Entity("TMP2019.Models.DataModels.Camp", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("ArenaId");
-
-                    b.Property<string>("CampDescription");
-
-                    b.Property<string>("CampName");
-
-                    b.Property<DateTime>("EndDate");
-
-                    b.Property<DateTime>("StartDate");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ArenaId");
-
-                    b.ToTable("Camp");
                 });
 
             modelBuilder.Entity("TMP2019.Models.DataModels.Club", b =>
@@ -381,10 +316,6 @@ namespace TMP2019.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ActivityId");
-
-                    b.Property<int?>("CampId");
-
                     b.Property<string>("City");
 
                     b.Property<int?>("ClubId");
@@ -414,10 +345,6 @@ namespace TMP2019.Data.Migrations
                     b.Property<string>("ZipCode");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ActivityId");
-
-                    b.HasIndex("CampId");
 
                     b.HasIndex("ClubId");
 
@@ -601,28 +528,6 @@ namespace TMP2019.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("TMP2019.Models.DataModels.Activity", b =>
-                {
-                    b.HasOne("TMP2019.Models.DataModels.ActivityType", "ActivityType")
-                        .WithMany()
-                        .HasForeignKey("ActivityTypeId");
-
-                    b.HasOne("TMP2019.Models.DataModels.Arena", "Arena")
-                        .WithMany()
-                        .HasForeignKey("ArenaId");
-
-                    b.HasOne("TMP2019.Models.DataModels.Camp")
-                        .WithMany("Activities")
-                        .HasForeignKey("CampId");
-                });
-
-            modelBuilder.Entity("TMP2019.Models.DataModels.Camp", b =>
-                {
-                    b.HasOne("TMP2019.Models.DataModels.Arena", "Arena")
-                        .WithMany()
-                        .HasForeignKey("ArenaId");
-                });
-
             modelBuilder.Entity("TMP2019.Models.DataModels.Club", b =>
                 {
                     b.HasOne("TMP2019.Models.DataModels.District", "District")
@@ -671,14 +576,6 @@ namespace TMP2019.Data.Migrations
 
             modelBuilder.Entity("TMP2019.Models.DataModels.Person", b =>
                 {
-                    b.HasOne("TMP2019.Models.DataModels.Activity")
-                        .WithMany("People")
-                        .HasForeignKey("ActivityId");
-
-                    b.HasOne("TMP2019.Models.DataModels.Camp")
-                        .WithMany("People")
-                        .HasForeignKey("CampId");
-
                     b.HasOne("TMP2019.Models.DataModels.Club", "Club")
                         .WithMany()
                         .HasForeignKey("ClubId");

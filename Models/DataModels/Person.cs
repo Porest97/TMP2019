@@ -63,19 +63,19 @@ namespace TMP2019.Models.DataModels
         //[ForeignKey("IdentityUserId")]
         //public IdentityUser IdentityUser { get; set; }
 
-        [Display(Name = "Person Type")]
+        
         public int? PersonTypeId { get; set; }
         [Display(Name = "Person Type")]
         [ForeignKey("PersonTypeId")]
         public PersonType PersonType { get; set; }
 
-        [Display(Name = "Company")]
+        
         public int? CompanyId { get; set; }
         [Display(Name = "Company")]
         [ForeignKey("CompanyId")]
         public Company Company { get; set; }
 
-        [Display(Name = "Club")]
+        
         public int? ClubId { get; set; }
         [Display(Name = "Club")]
         [ForeignKey("ClubId")]

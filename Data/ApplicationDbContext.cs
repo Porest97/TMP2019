@@ -23,5 +23,9 @@ namespace TMP2019.Data
         public DbSet<TMP2019.Models.DataModels.MatchCategory> MatchCategory { get; set; }
         public DbSet<TMP2019.Models.DataModels.Receipt> Receipt { get; set; }
         public DbSet<TMP2019.Models.DataModels.Team> Team { get; set; }
+        public DbSet<TMP2019.Models.DataModels.Tournament> Tournament { get; set; }
+        public DbSet<TMP2019.Models.DataModels.Activity> Activity { get; set; }
+        public DbSet<TMP2019.Models.DataModels.ActivityType> ActivityType { get; set; }
+        public DbSet<TMP2019.Models.DataModels.Camp> Camp { get; set; }
     }
 }
