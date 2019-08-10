@@ -19,10 +19,14 @@ namespace TMP2019.Controllers.TMPHockeyControllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index(string sortOrder)
+        public async Task<IActionResult> Index(string sortOrder , string searchString , string searchString1)
         {
-            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "arena_desc" : "";
+            ViewData["ArenaSortParm"] = sortOrder == "Arena" ? "arena_desc" : "Arena";
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["StatusSortParm"] = sortOrder == "Status" ? "status_desc" : "Status";
+            ViewData["GameCategorySortParm"] = sortOrder == "GameCategory" ? "gameCategory_desc" : "GameCategory";
+            ViewData["CurrentFilter"] = searchString;
+            ViewData["CurrentFilter1"] = searchString1;
             var games = from g in _context.Game
                         .Include(g => g.Arena)
                         .Include(g => g.AwayTeam)
@@ -34,19 +38,50 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                         .Include(g => g.LD2)
                         .Include(g => g.GameStatus)
                         select g;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                games = games.Where(g => g.Arena.ArenaName.Contains(searchString) 
+                
+                
+                
+                );
+            }
+            // SS for GameStatus
+            if (!String.IsNullOrEmpty(searchString1))
+            {
+                games = games.Where(g => g.GameStatus.GameStatusName.Contains(searchString1)                          
+
+
+                );
+            }
             switch (sortOrder)
             {
                 case "arena_desc":
                     games = games.OrderByDescending(g => g.Arena.ArenaName);
                     break;
+                case "Arena":
+                    games = games.OrderBy(g => g.Arena.ArenaName);
+                    break;                
                 case "Date":
                     games = games.OrderBy(g => g.GameDateTime);
                     break;
                 case "date_desc":
                     games = games.OrderByDescending(g => g.GameDateTime);
                     break;
+                case "status_desc":
+                    games = games.OrderByDescending(g => g.GameStatus.GameStatusName);
+                    break;
+                case "Status":
+                    games = games.OrderBy(g => g.GameStatus.GameStatusName);
+                    break;
+                case "gameCategory_desc":
+                    games = games.OrderByDescending(g => g.GameCategory.GameCategoryName);
+                    break;
+                case "GameCategory":
+                    games = games.OrderBy(g => g.GameCategory.GameCategoryName);
+                    break;
                 default:
-                    games = games.OrderBy(g => g.GameNumber);
+                    games = games.OrderBy(g => g.GameStatus);
                     break;
             }
             return View(await games.AsNoTracking().ToListAsync());

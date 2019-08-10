@@ -9,24 +9,46 @@
 <p>
     <a class="btn btn-sm btn-success" asp-action="Create">Create New</a>
 </p>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by Arena: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by Status: <input type="text" name="SearchString1" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.GameCategory)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["GameCategorySortParm"]">@Html.DisplayNameFor(model => model.GameCategory.GameCategoryName)</a>
+                @*@Html.DisplayNameFor(model => model.GameCategory)*@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TSMNumber)
             </th>
             <th>
+
                 @Html.DisplayNameFor(model => model.GameNumber)
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">@Html.DisplayNameFor(model => model.GameDateTime)</a>
+           @* @Html.DisplayNameFor(model => model.GameDateTime)*@
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GameDateTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Arena)
-            </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["ArenaSortParm"]">@Html.DisplayNameFor(model => model.Arena.ArenaName)</a>
+            @* @Html.DisplayNameFor(model => model.Arena)*@
+        </th>
             <th>
                 @Html.DisplayNameFor(model => model.HomeTeam)
             </th>
@@ -49,13 +71,14 @@
                 @Html.DisplayNameFor(model => model.LD2)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.GameStatus)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["StatusSortParm"]">@Html.DisplayNameFor(model => model.GameStatus.GameStatusName)</a>
+                @* @Html.DisplayNameFor(model => model.GameStatus)*@
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.OrderByDescending(g => g.GameNumber)) {
+@foreach (var item in Model ) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.GameCategory.GameCategoryName)
