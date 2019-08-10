@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TMP2019.Models.DataModels;
+using TMP2019.Models.DataModels.TMPHockeyModels;
 
 namespace TMP2019.Data
 {
@@ -27,5 +28,8 @@ namespace TMP2019.Data
         public DbSet<TMP2019.Models.DataModels.Activity> Activity { get; set; }
         public DbSet<TMP2019.Models.DataModels.ActivityType> ActivityType { get; set; }
         public DbSet<TMP2019.Models.DataModels.Camp> Camp { get; set; }
+        public DbSet<TMP2019.Models.DataModels.TMPHockeyModels.Game> Game { get; set; }
+        public DbSet<TMP2019.Models.DataModels.TMPHockeyModels.GameCategory> GameCategory { get; set; }
+        public DbSet<TMP2019.Models.DataModels.TMPHockeyModels.GameStatus> GameStatus { get; set; }
     }
 }

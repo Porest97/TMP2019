@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TMP2019.Data;
 
 namespace TMP2019.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190809160000_TSMNumberAddedToGame")]
+    partial class TSMNumberAddedToGame
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -532,8 +534,6 @@ namespace TMP2019.Data.Migrations
 
                     b.Property<string>("GameNumber");
 
-                    b.Property<int?>("GameStatusId");
-
                     b.Property<int?>("HomeTeamScore");
 
                     b.Property<int?>("PersonId");
@@ -555,8 +555,6 @@ namespace TMP2019.Data.Migrations
                     b.HasIndex("ArenaId");
 
                     b.HasIndex("GameCategoryId");
-
-                    b.HasIndex("GameStatusId");
 
                     b.HasIndex("PersonId");
 
@@ -584,19 +582,6 @@ namespace TMP2019.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("GameCategory");
-                });
-
-            modelBuilder.Entity("TMP2019.Models.DataModels.TMPHockeyModels.GameStatus", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("GameStatusName");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("GameStatus");
                 });
 
             modelBuilder.Entity("TMP2019.Models.DataModels.Team", b =>
@@ -811,10 +796,6 @@ namespace TMP2019.Data.Migrations
                     b.HasOne("TMP2019.Models.DataModels.TMPHockeyModels.GameCategory", "GameCategory")
                         .WithMany()
                         .HasForeignKey("GameCategoryId");
-
-                    b.HasOne("TMP2019.Models.DataModels.TMPHockeyModels.GameStatus", "GameStatus")
-                        .WithMany()
-                        .HasForeignKey("GameStatusId");
 
                     b.HasOne("TMP2019.Models.DataModels.Person", "HD1")
                         .WithMany()

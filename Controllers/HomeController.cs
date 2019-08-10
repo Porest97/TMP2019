@@ -20,6 +20,27 @@ namespace TMP2019.Controllers
             return View();
         }
 
+        public IActionResult Links()
+        {
+            return View();
+        }
+
+        public IActionResult Stats()
+        {
+            return View();
+        }
+
+        public IActionResult TMPHockey()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("Admin")) return RedirectToAction("TMPHockey", "Admin");
+                else
+                    return RedirectToAction("Index", "Guest");
+            }
+            return View();
+        }
+
         public IActionResult Index()
         {
             return View();
