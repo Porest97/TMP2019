@@ -151,7 +151,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,GameCategoryId,GameNumber,GameDateTime,ArenaId,TeamId,TeamId1,HomeTeamScore,AwayTeamScore,PersonId,PersonId1,PersonId2,PersonId3,TSMNumber,GameStatus")] Game game)
+        public async Task<IActionResult> Create([Bind("Id,GameCategoryId,GameNumber,GameDateTime,ArenaId,TeamId,TeamId1,HomeTeamScore,AwayTeamScore,PersonId,PersonId1,PersonId2,PersonId3,TSMNumber,GameStatusId")] Game game)
         {
             if (ModelState.IsValid)
             {
