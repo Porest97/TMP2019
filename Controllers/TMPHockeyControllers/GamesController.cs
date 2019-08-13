@@ -57,16 +57,16 @@ namespace TMP2019.Controllers.TMPHockeyControllers
             switch (sortOrder)
             {
                 case "arena_desc":
-                    games = games.OrderByDescending(g => g.Arena.ArenaName);
+                    games = games.OrderByDescending(g => g.Arena.ArenaName).Where(g => g.Id != 0 && g.GameStatusId == 1);
                     break;
                 case "Arena":
-                    games = games.OrderBy(g => g.Arena.ArenaName);
+                    games = games.OrderBy(g => g.Arena.ArenaName).Where(g => g.Id != 0 && g.GameStatusId == 1);
                     break;                
                 case "Date":
-                    games = games.OrderBy(g => g.GameDateTime);
+                    games = games.OrderBy(g => g.GameDateTime).Where(g => g.Id != 0 && g.GameStatusId == 1);
                     break;
                 case "date_desc":
-                    games = games.OrderByDescending(g => g.GameDateTime);
+                    games = games.OrderByDescending(g => g.GameDateTime).Where(g => g.Id != 0 && g.GameStatusId == 1);
                     break;
                 case "status_desc":
                     games = games.OrderByDescending(g => g.GameStatus.GameStatusName);
@@ -75,10 +75,10 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                     games = games.OrderBy(g => g.GameStatus.GameStatusName);
                     break;
                 case "gameCategory_desc":
-                    games = games.OrderByDescending(g => g.GameCategory.GameCategoryName);
+                    games = games.OrderByDescending(g => g.GameCategory.GameCategoryName).Where(g => g.Id != 0 && g.GameStatusId == 1);
                     break;
                 case "GameCategory":
-                    games = games.OrderBy(g => g.GameCategory.GameCategoryName);
+                    games = games.OrderBy(g => g.GameCategory.GameCategoryName).Where(g => g.Id != 0 && g.GameStatusId == 1);
                     break;
                 default:
                     games = games.OrderBy(g => g.GameStatus).Where(g=> g.Id !=0 && g.GameStatusId == 1);

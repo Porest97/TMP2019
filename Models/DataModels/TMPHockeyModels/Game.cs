@@ -50,6 +50,9 @@ namespace TMP2019.Models.DataModels.TMPHockeyModels
         [Display(Name = "Score")]
         public string Result { get { return string.Format("{0} {1} {2}", HomeTeamScore, "-", AwayTeamScore); } }
 
+        [Display(Name = "Teams")]
+        public string Teams { get { return string.Format("{0} {1} {2}", HomeTeam, "-", AwayTeam); } }
+
         [Display(Name = "HD")]
         public int? PersonId { get; set; }
         [Display(Name = "HD")]
@@ -82,6 +85,10 @@ namespace TMP2019.Models.DataModels.TMPHockeyModels
         [Display(Name = "Status")]
         [ForeignKey("GameStatusId")]
         public GameStatus GameStatus { get; set; }
+
+        //[Display(Name = "Game")]
+        //public string GameRecieptString { get { return string.Format("{0} {1} {2} {3} {4}", GameNumber, "GameDateTime", Arena.ArenaName, HomeTeam, AwayTeam); } }
+
 
 
 
