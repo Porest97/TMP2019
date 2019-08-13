@@ -4,7 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Game Details</h1>
 
 <div>
     <h4>Game</h4>
@@ -91,6 +91,11 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    <a class="btn btn-sm btn-success" asp-controller="Home" asp-action="Lists">Back to Home Lists</a>
+    <a class="btn btn-sm btn-success" asp-controller="GameLists" asp-action="ScheduledGames">Back to Scheduled Games</a>
+    <a class="btn btn-sm btn-success" asp-controller="GameLists" asp-action="StartedGames">Back to Started Games</a>
+    <a class="btn btn-sm btn-success" asp-controller="GameLists" asp-action="FinalGames">Back to Final Games</a>
+    <a class="btn btn-sm btn-success" asp-controller="GameLists" asp-action="ArchivedGames">Back to Archived Games</a>
+    <a class="btn btn-sm btn-success" asp-controller="Games" asp-action="Index">Back to Games List</a>
 </div>

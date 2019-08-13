@@ -9,7 +9,7 @@ namespace TMP2019.Models.DataModels.TMPHockeyModels.ViewModels
 {
     public class GamesListViewModel
     {
-
+        
         [Display(Name = "Category")]
         public int? GameCategoryId { get; set; }
         [Display(Name = "Category")]

@@ -4,7 +4,16 @@
 }
 
 <h1>Scheduled Games</h1>
-<table class="table">
+<div class="accordion">
+    <a class="btn btn-sm btn-success" asp-controller="Games" asp-action="Create">Create Game !</a>
+    <a class="btn btn-sm btn-success" asp-controller="Home" asp-action="Lists">Back to Home Lists</a>
+    <a class="btn btn-sm btn-success" asp-controller="GameLists" asp-action="StartedGames">Go to Started Games</a>
+    <a class="btn btn-sm btn-success" asp-controller="GameLists" asp-action="FinalGames">Go to Final Games</a>
+    <a class="btn btn-sm btn-success" asp-controller="GameLists" asp-action="ArchivedGames">Go to Archived Games</a>
+    <a class="btn btn-sm btn-success" asp-controller="Games" asp-action="Index">Go to Games List</a>
+</div>
+
+<table class="table table-responsive-sm table-striped">
     <thead>
         <tr>
             <th>
@@ -53,7 +62,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Games)
+        @foreach (var item in Model.Games.OrderBy(g=>g.GameDateTime))
         {
             <tr>
                 <td>
@@ -96,7 +105,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.GameStatus.GameStatusName)
                 </td>
-                <td></td>
+                <td>
+                    <a class="btn btn-sm btn-success" asp-controller="Games" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-sm btn-success" asp-controller="Games" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a class="btn btn-sm btn-danger" asp-controller="Games" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
             </tr>
         }
     </tbody>

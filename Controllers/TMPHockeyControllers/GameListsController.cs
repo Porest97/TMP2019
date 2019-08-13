@@ -25,8 +25,12 @@ namespace TMP2019.Controllers.TMPHockeyControllers
 
         public IActionResult ScheduledGames()
         {
+
+
             var gamesListViewModel = new GamesListViewModel()
             {
+                
+
                 Games = _context.Game
                        .Include(g => g.Arena)
                        .Include(g => g.AwayTeam)
@@ -91,7 +95,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                         .Include(g => g.HomeTeam)
                         .Include(g => g.LD1)
                         .Include(g => g.LD2)
-                        .Include(g => g.GameStatus).Where(g => g.Id !=0 && g.GameStatusId == 4).ToList()
+                        .Include(g => g.GameStatus).Where(g => g.Id != 0 && g.GameStatusId == 4).ToList()
             };
             return View(gamesListViewModel);
         }

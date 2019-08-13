@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Create Game</h1>
 
 <h4>Game</h4>
 <hr />
@@ -74,13 +74,18 @@
                 <select asp-for="GameStatusId" class="form-control" asp-items="ViewBag.GameStatusId"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-sm btn-success" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-sm btn-success" asp-controller="Home" asp-action="Lists">Back to Home Lists</a>
+    <a class="btn btn-sm btn-success" asp-controller="GameLists" asp-action="ScheduledGames">Back to Scheduled Games</a>
+    <a class="btn btn-sm btn-success" asp-controller="GameLists" asp-action="StartedGames">Back to Started Games</a>
+    <a class="btn btn-sm btn-success" asp-controller="GameLists" asp-action="FinalGames">Back to Final Games</a>
+    <a class="btn btn-sm btn-success" asp-controller="GameLists" asp-action="ArchivedGames">Back to Archived Games</a>
+    <a class="btn btn-sm btn-success" asp-controller="Games" asp-action="Index">Back to Games List</a>
 </div>
 
