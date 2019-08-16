@@ -22,7 +22,15 @@ namespace TMP2019.Controllers.TMPHockeyControllers
         // GET: GameReceipts
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.GameReceipt.Include(g => g.Game).Include(g => g.HD1).Include(g => g.HD2).Include(g => g.LD1).Include(g => g.LD2);
+            var applicationDbContext = _context.GameReceipt
+                .Include(gr => gr.Game)
+                .Include(gr => gr.Game.Arena)
+                .Include(gr => gr.Game.HomeTeam)
+                .Include(gr => gr.Game.AwayTeam)
+                .Include(gr => gr.HD1)
+                .Include(gr => gr.HD2)
+                .Include(gr => gr.LD1)
+                .Include(gr => gr.LD2);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -30,7 +38,15 @@ namespace TMP2019.Controllers.TMPHockeyControllers
         [HttpPost]
         public IActionResult Index(GameReceipt gameReceipt)
         {
-            var applicationDbContext = _context.GameReceipt.Include(gr => gr.Game).Include(gr => gr.HD1).Include(g => g.HD2).Include(g => g.LD1).Include(g => g.LD2);
+            var applicationDbContext = _context.GameReceipt
+                .Include(gr => gr.Game)
+                .Include(gr => gr.Game.Arena)
+                .Include(gr => gr.Game.HomeTeam)
+                .Include(gr => gr.Game.AwayTeam)
+                .Include(gr => gr.HD1)
+                .Include(gr => gr.HD2)
+                .Include(gr => gr.LD1)
+                .Include(gr => gr.LD2);
             gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost;
             gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost;
             gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost;
@@ -48,11 +64,14 @@ namespace TMP2019.Controllers.TMPHockeyControllers
             }
 
             var gameReceipt = await _context.GameReceipt
-                .Include(g => g.Game)
-                .Include(g => g.HD1)
-                .Include(g => g.HD2)
-                .Include(g => g.LD1)
-                .Include(g => g.LD2)
+                .Include(gr => gr.Game)
+                .Include(gr => gr.Game.Arena)
+                .Include(gr => gr.Game.HomeTeam)
+                .Include(gr => gr.Game.AwayTeam)
+                .Include(gr => gr.HD1)
+                .Include(gr => gr.HD2)
+                .Include(gr => gr.LD1)
+                .Include(gr => gr.LD2)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (gameReceipt == null)
             {
@@ -65,6 +84,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
         // GET: GameReceipts/Create
         public IActionResult Create()
         {
+            //ViewData["ArenaId"] = new SelectList(_context.Arena, "Id", "ArenaName");
             ViewData["GameId"] = new SelectList(_context.Game, "Id", "GameNumber");
             ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FullName");
             ViewData["PersonId1"] = new SelectList(_context.Person, "Id", "FullName");
@@ -82,7 +102,15 @@ namespace TMP2019.Controllers.TMPHockeyControllers
         {
             if (ModelState.IsValid)
             {
-                var applicationDbContext = _context.GameReceipt.Include(gr => gr.Game).Include(gr => gr.HD1).Include(g => g.HD2).Include(g => g.LD1).Include(g => g.LD2);
+                var applicationDbContext = _context.GameReceipt
+                .Include(gr => gr.Game)
+                .Include(gr => gr.Game.Arena)
+                .Include(gr => gr.Game.HomeTeam)
+                .Include(gr => gr.Game.AwayTeam)
+                .Include(gr => gr.HD1)
+                .Include(gr => gr.HD2)
+                .Include(gr => gr.LD1)
+                .Include(gr => gr.LD2);
                 gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost;
                 gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost;
                 gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost;
@@ -93,6 +121,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            //ViewData["ArenaId"] = new SelectList(_context.Arena, "Id", "ArenaName", gameReceipt.Game.ArenaId);
             ViewData["GameId"] = new SelectList(_context.Game, "Id", "GameNumber", gameReceipt.GameId);
             ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FullName", gameReceipt.PersonId);
             ViewData["PersonId1"] = new SelectList(_context.Person, "Id", "FullName", gameReceipt.PersonId1);
@@ -114,6 +143,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
             {
                 return NotFound();
             }
+            //ViewData["ArenaId"] = new SelectList(_context.Arena, "Id", "ArenaName", gameReceipt.Game.ArenaId);
             ViewData["GameId"] = new SelectList(_context.Game, "Id", "GameNumber", gameReceipt.GameId);
             ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FullName", gameReceipt.PersonId);
             ViewData["PersonId1"] = new SelectList(_context.Person, "Id", "FullName", gameReceipt.PersonId1);
@@ -138,7 +168,15 @@ namespace TMP2019.Controllers.TMPHockeyControllers
             {
                 try
                 {
-                    var applicationDbContext = _context.GameReceipt.Include(gr => gr.Game).Include(gr => gr.HD1).Include(g => g.HD2).Include(g => g.LD1).Include(g => g.LD2);
+                    var applicationDbContext = _context.GameReceipt
+                   .Include(gr => gr.Game)
+                   .Include(gr => gr.Game.Arena)
+                   .Include(gr => gr.Game.HomeTeam)
+                   .Include(gr => gr.Game.AwayTeam)
+                   .Include(gr => gr.HD1)
+                   .Include(gr => gr.HD2)
+                   .Include(gr => gr.LD1)
+                   .Include(gr => gr.LD2);
                     gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost;
                     gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost;
                     gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost;
@@ -161,6 +199,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            //ViewData["ArenaId"] = new SelectList(_context.Arena, "Id", "ArenaName", gameReceipt.Game.ArenaId);
             ViewData["GameId"] = new SelectList(_context.Game, "Id", "GameNumber", gameReceipt.GameId);
             ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FullName", gameReceipt.PersonId);
             ViewData["PersonId1"] = new SelectList(_context.Person, "Id", "FullName", gameReceipt.PersonId1);

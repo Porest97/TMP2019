@@ -81,7 +81,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                     games = games.OrderBy(g => g.GameCategory.GameCategoryName).Where(g => g.Id != 0 && g.GameStatusId == 1);
                     break;
                 default:
-                    games = games.OrderBy(g => g.GameStatus).Where(g=> g.Id !=0 && g.GameStatusId == 1);
+                    games = games.OrderBy(g => g.GameDateTime).Where(g=> g.Id !=0 && g.GameStatusId == 1);
                     break;
             }
             return View(await games.AsNoTracking().ToListAsync());

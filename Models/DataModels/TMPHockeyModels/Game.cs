@@ -89,8 +89,9 @@ namespace TMP2019.Models.DataModels.TMPHockeyModels
         //[Display(Name = "Game")]
         //public string GameRecieptString { get { return string.Format("{0} {1} {2} {3} {4}", GameNumber, "GameDateTime", Arena.ArenaName, HomeTeam, AwayTeam); } }
 
+        [Display(Name = "GameString")]
+        public string GameString { get { return string.Format("{0} {1}",GameDateTime, Arena); } }
 
-
-
+        
     }
 }

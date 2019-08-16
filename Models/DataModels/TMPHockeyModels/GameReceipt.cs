@@ -111,6 +111,7 @@ namespace TMP2019.Models.DataModels.TMPHockeyModels
         [DataType(DataType.Currency)]
         public int GameTotalKost { get; set; } = 0;
 
+       
 
     }
 }

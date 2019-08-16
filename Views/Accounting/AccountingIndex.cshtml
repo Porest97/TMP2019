@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "AccountingIndex";
+}
+
+<h1>Accounting Index</h1>
+
+<ul class="navbar-nav flex-grow-1">
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="GameLists" asp-action="ScheduledGames">List Scheduled Games</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="GameLists" asp-action="StartedGames">List Started Games</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="GameLists" asp-action="FinalGames">List Final Games</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Accounting" asp-action="GameReceipts">Game Receipts</a>
+    </li>
+</ul>
