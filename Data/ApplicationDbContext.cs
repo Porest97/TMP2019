@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TMP2019.Models.DataModels;
 using TMP2019.Models.DataModels.TMPHockeyModels;
+using TMP2019.Models.DataModels.AccountingModels.DataModels;
 
 namespace TMP2019.Data
 {
@@ -31,6 +32,11 @@ namespace TMP2019.Data
         public DbSet<TMP2019.Models.DataModels.TMPHockeyModels.Game> Game { get; set; }
         public DbSet<TMP2019.Models.DataModels.TMPHockeyModels.GameCategory> GameCategory { get; set; }
         public DbSet<TMP2019.Models.DataModels.TMPHockeyModels.GameStatus> GameStatus { get; set; }
-        public DbSet<TMP2019.Models.DataModels.TMPHockeyModels.GameReceipt> GameReceipt { get; set; }
+        public DbSet<TMP2019.Models.DataModels.AccountingModels.DataModels.GameReceipt> GameReceipt { get; set; }
+        public DbSet<TMP2019.Models.DataModels.AccountingModels.DataModels.ReceiptStatus> ReceiptStatus { get; set; }
+        public DbSet<TMP2019.Models.DataModels.AccountingModels.DataModels.AccountsToPerson> AccountsToPerson { get; set; }
+        public DbSet<TMP2019.Models.DataModels.AccountingModels.DataModels.Article> Article { get; set; }
+        public DbSet<TMP2019.Models.DataModels.AccountingModels.DataModels.InvoiceRow> InvoiceRow { get; set; }
+        public DbSet<TMP2019.Models.DataModels.AccountingModels.DataModels.Invoice> Invoice { get; set; }
     }
 }

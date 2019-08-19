@@ -1,54 +1,135 @@
-﻿@model TMP2019.Models.DataModels.TMPHockeyModels.GameReceipt
+﻿@model TMP2019.Models.DataModels.AccountingModels.DataModels.GameReceipt
 
 @{
     ViewData["Title"] = "GameReceiptDetails";
 }
 
-<h1>Receipt Details</h1>
 
 <div>
     <h4>Game Receipt</h4>
     <hr />
-    <dl class="row flex-sm-grow-1">
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Game)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.Game.GameNumber)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Game.Arena)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.Game.Arena.ArenaName)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Game.HomeTeam)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.Game.HomeTeam.TeamName)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Game.AwayTeam)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.Game.AwayTeam.TeamName)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Game.Result)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.Game.Result)</dd>
-
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD1)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.HD1.FullName)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD1Fee)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.HD1Fee)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD1TravelKost)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.HD1TravelKost)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD1Alowens)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.HD1Alowens)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD1LateGameKost)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.HD1LateGameKost)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD1TotalFee)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.HD1TotalFee)</dd>
-        
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD2)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.HD2.FullName)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD2Fee)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.HD2Fee)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD2TravelKost)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.HD2TravelKost)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD2Alowens)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.HD2Alowens)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD2LateGameKost)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.HD2LateGameKost)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD2TotalFee)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.HD2TotalFee)</dd>
-
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD1)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.LD1.FullName)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD1Fee)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.LD1Fee)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD1TravelKost)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.LD1TravelKost)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD1Alowens)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.LD1Alowens)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD1LateGameKost)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.LD1LateGameKost)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD1TotalFee)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.LD1TotalFee)</dd>
-                          
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD2)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.LD2.FullName)</dd>
-        
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD2Fee)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.LD2Fee)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD2TravelKost)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.LD2TravelKost)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD2Alowens)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.LD2Alowens)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD2LateGameKost)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.LD2LateGameKost)</dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD2TotalFee)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.LD2TotalFee)</dd>
-
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.GameTotalKost)</dt><dd class="col-sm-10">@Html.DisplayFor(model => model.GameTotalKost)</dd>
+    <div class="row col-sm-12 text-body">
+        <div class="col-sm-6 border-dark">
+            <dl class="row border-dark">
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Game.GameDateTime)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Game.GameDateTime)</dd>
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Game.TSMNumber)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Game.TSMNumber)</dd>
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Game.Arena)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Game.Arena.ArenaName)</dd>
+            </dl>
+        </div>
+        <div class="col-sm-6 border-dark">
+            <dl class="row border-dark">
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Game.HomeTeam)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Game.HomeTeam.TeamName)</dd>
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Game.AwayTeam)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Game.AwayTeam.TeamName)</dd>
+                <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Game.Result)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Game.Result)</dd>
+            </dl>
+        </div>
+    </div>
+    <div class="row col-sm-12">
+        <div class="col-sm-6 border-dark">
+            <dl class="row flex-grow-1 border-success">
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD1)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.HD1.CName)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD1.Address)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.HD1.Address)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD1.SwishNumber)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.HD1.SwishNumber)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD1.BankAccount)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.HD1.BankAccount)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD1Fee)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.HD1Fee)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD1TravelKost)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.HD1TravelKost)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD1Alowens)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.HD1Alowens)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD1LateGameKost)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.HD1LateGameKost)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD1TotalFee)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.HD1TotalFee)</dd>
+            </dl>
+        </div>
+        <div class="col-sm-6 border-dark">
+            <dl class="row flex-grow-1 border-success">
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD2)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.HD2.CName)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD2.Address)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.HD2.Address)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD2.SwishNumber)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.HD2.SwishNumber)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD2.BankAccount)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.HD2.BankAccount)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD2Fee)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.HD2Fee)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD2TravelKost)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.HD2TravelKost)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD2Alowens)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.HD2Alowens)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD2LateGameKost)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.HD2LateGameKost)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.HD2TotalFee)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.HD2TotalFee)</dd>
+            </dl>
+        </div>
+    </div>
+    <div class="row col-sm-12">
+        <div class="col-sm-6 border-dark">
+            <dl class="row flex-grow-1 border-success">
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD1)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.LD1.CName)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD1.Address)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.LD1.Address)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD1.SwishNumber)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.LD1.SwishNumber)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD1.BankAccount)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.LD1.BankAccount)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD1Fee)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.LD1Fee)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD1TravelKost)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.LD1TravelKost)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD1Alowens)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.LD1Alowens)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD1LateGameKost)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.LD1LateGameKost)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD1TotalFee)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.LD1TotalFee)</dd>
+            </dl>
+        </div>
+        <div class="col-sm-6 border-dark">
+            <dl class="row flex-grow-1 border-dark">
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD2)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.LD2.CName)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD2.Address)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.LD2.Address)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD2.SwishNumber)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.LD2.SwishNumber)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD2.BankAccount)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.LD2.BankAccount)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD2Fee)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.LD2Fee)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD2TravelKost)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.LD2TravelKost)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD2Alowens)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.LD2Alowens)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD2LateGameKost)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.LD2LateGameKost)</dd>
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.LD2TotalFee)</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.LD2TotalFee)</dd>
+            </dl>
+        </div>
+    </div>
+    <dl class="row flex-grow-1 border-success">
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.GameTotalKost)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.GameTotalKost)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.ReceiptStatus)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.ReceiptStatus.ReceiptStatusName)</dd>
     </dl>
-</div>
-<div>
-    <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-    <a class="btn btn-sm btn-success" asp-action="Index">Back to List</a>
-</div>
+        </div>
+        <div>
+            <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+            <a class="btn btn-sm btn-success" asp-action="Index">Back to List</a>
+        </div>

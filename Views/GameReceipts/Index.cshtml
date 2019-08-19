@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TMP2019.Models.DataModels.TMPHockeyModels.GameReceipt>
+﻿@model IEnumerable<TMP2019.Models.DataModels.AccountingModels.DataModels.GameReceipt>
 
 @{
     ViewData["Title"] = "Index";
@@ -34,7 +34,7 @@
         <tr>
             <th>@Html.DisplayNameFor(model => model.Game.GameDateTime)</th>
             <th>@Html.DisplayNameFor(model => model.Game.Arena)</th>
-            <th>@Html.DisplayNameFor(model => model.Game.HomeTeam)</th>                                   
+            <th>@Html.DisplayNameFor(model => model.Game.HomeTeam)</th>
             <th>@Html.DisplayNameFor(model => model.Game.AwayTeam)</th>
 
             <th>@Html.DisplayNameFor(model => model.HD1)</th>
@@ -66,6 +66,10 @@
             <th>@Html.DisplayNameFor(model => model.LD2TotalFee)</th>
 
             <th>@Html.DisplayNameFor(model => model.GameTotalKost)</th>
+
+            <th>@Html.DisplayNameFor(model => model.ReceiptStatus)</th>
+
+
             <th></th>
         </tr>
     </thead>
@@ -106,6 +110,9 @@
             <td>@Html.DisplayFor(modelItem => item.LD2TotalFee)</td>
 
             <td>@Html.DisplayFor(modelItem => item.GameTotalKost)</td>
+
+            <td>@Html.DisplayFor(modelItem => item.ReceiptStatus.ReceiptStatusName)</td>
+
             <td>
                 <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                 <a class="btn btn-sm btn-success" asp-action="Details" asp-route-id="@item.Id">Details</a>

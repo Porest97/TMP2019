@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TMP2019.Data;
+using TMP2019.Models.DataModels.AccountingModels.DataModels;
 using TMP2019.Models.DataModels.TMPHockeyModels;
 
 namespace TMP2019.Controllers.TMPHockeyControllers
@@ -30,7 +31,8 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                 .Include(gr => gr.HD1)
                 .Include(gr => gr.HD2)
                 .Include(gr => gr.LD1)
-                .Include(gr => gr.LD2);
+                .Include(gr => gr.LD2)
+                .Include(gr => gr.ReceiptStatus);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -46,7 +48,9 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                 .Include(gr => gr.HD1)
                 .Include(gr => gr.HD2)
                 .Include(gr => gr.LD1)
-                .Include(gr => gr.LD2);
+                .Include(gr => gr.LD2)
+                .Include(gr => gr.ReceiptStatus);
+                
             gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost;
             gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost;
             gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost;
@@ -72,6 +76,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                 .Include(gr => gr.HD2)
                 .Include(gr => gr.LD1)
                 .Include(gr => gr.LD2)
+                .Include(gr => gr.ReceiptStatus)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (gameReceipt == null)
             {
@@ -84,12 +89,13 @@ namespace TMP2019.Controllers.TMPHockeyControllers
         // GET: GameReceipts/Create
         public IActionResult Create()
         {
-            //ViewData["ArenaId"] = new SelectList(_context.Arena, "Id", "ArenaName");
+            
             ViewData["GameId"] = new SelectList(_context.Game, "Id", "GameNumber");
             ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FullName");
             ViewData["PersonId1"] = new SelectList(_context.Person, "Id", "FullName");
             ViewData["PersonId2"] = new SelectList(_context.Person, "Id", "FullName");
             ViewData["PersonId3"] = new SelectList(_context.Person, "Id", "FullName");
+            ViewData["ReceiptStatusId"] = new SelectList(_context.ReceiptStatus, "Id", "ReceiptStatusName");
             return View();
         }
 
@@ -98,7 +104,12 @@ namespace TMP2019.Controllers.TMPHockeyControllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,GameId,PersonId,PersonId1,PersonId2,PersonId3,HD1Fee,HD1TravelKost,HD1Alowens,HD1LateGameKost,HD1TotalFee,HD2Fee,HD2TravelKost,HD2Alowens,HD2LateGameKost,HD2TotalFee,LD1Fee,LD1TravelKost,LD1Alowens,LD1LateGameKost,LD1TotalFee,LD2Fee,LD2TravelKost,LD2Alowens,LD2LateGameKost,LD2TotalFee,GameTotalKost")] GameReceipt gameReceipt)
+        public async Task<IActionResult> Create([Bind
+            ("Id,GameId,PersonId,PersonId1,PersonId2,PersonId3,HD1Fee," +
+            "HD1TravelKost,HD1Alowens,HD1LateGameKost,HD1TotalFee,HD2Fee,HD2TravelKost,HD2Alowens,HD2LateGameKost," +
+            "HD2TotalFee,LD1Fee,LD1TravelKost,LD1Alowens,LD1LateGameKost,LD1TotalFee,LD2Fee,LD2TravelKost,LD2Alowens," +
+            "LD2LateGameKost,LD2TotalFee,GameTotalKost,ReceiptStatusId," +
+            "AmountPaidHD1,AmountPaidHD2,AmountPaidLD1,AmountPaidLD2,TotalAmountPaid,TotalAmountToPay")] GameReceipt gameReceipt)
         {
             if (ModelState.IsValid)
             {
@@ -110,7 +121,8 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                 .Include(gr => gr.HD1)
                 .Include(gr => gr.HD2)
                 .Include(gr => gr.LD1)
-                .Include(gr => gr.LD2);
+                .Include(gr => gr.LD2)
+                .Include(gr => gr.ReceiptStatus);
                 gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost;
                 gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost;
                 gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost;
@@ -127,6 +139,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
             ViewData["PersonId1"] = new SelectList(_context.Person, "Id", "FullName", gameReceipt.PersonId1);
             ViewData["PersonId2"] = new SelectList(_context.Person, "Id", "FullName", gameReceipt.PersonId2);
             ViewData["PersonId3"] = new SelectList(_context.Person, "Id", "FullName", gameReceipt.PersonId3);
+            ViewData["ReceiptStatusId"] = new SelectList(_context.ReceiptStatus, "Id", "ReceiptStatusName", gameReceipt.ReceiptStatusId);
             return View(gameReceipt);
         }
 
@@ -149,6 +162,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
             ViewData["PersonId1"] = new SelectList(_context.Person, "Id", "FullName", gameReceipt.PersonId1);
             ViewData["PersonId2"] = new SelectList(_context.Person, "Id", "FullName", gameReceipt.PersonId2);
             ViewData["PersonId3"] = new SelectList(_context.Person, "Id", "FullName", gameReceipt.PersonId3);
+            ViewData["ReceiptStatusId"] = new SelectList(_context.ReceiptStatus, "Id", "ReceiptStatusName", gameReceipt.ReceiptStatusId);
             return View(gameReceipt);
         }
 
@@ -157,7 +171,12 @@ namespace TMP2019.Controllers.TMPHockeyControllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,GameId,PersonId,PersonId1,PersonId2,PersonId3,HD1Fee,HD1TravelKost,HD1Alowens,HD1LateGameKost,HD1TotalFee,HD2Fee,HD2TravelKost,HD2Alowens,HD2LateGameKost,HD2TotalFee,LD1Fee,LD1TravelKost,LD1Alowens,LD1LateGameKost,LD1TotalFee,LD2Fee,LD2TravelKost,LD2Alowens,LD2LateGameKost,LD2TotalFee,GameTotalKost")] GameReceipt gameReceipt)
+        public async Task<IActionResult> Edit(int id, [Bind
+            ("Id,GameId,PersonId,PersonId1,PersonId2,PersonId3,HD1Fee," +
+            "HD1TravelKost,HD1Alowens,HD1LateGameKost,HD1TotalFee,HD2Fee,HD2TravelKost,HD2Alowens,HD2LateGameKost," +
+            "HD2TotalFee,LD1Fee,LD1TravelKost,LD1Alowens,LD1LateGameKost,LD1TotalFee,LD2Fee,LD2TravelKost,LD2Alowens," +
+            "LD2LateGameKost,LD2TotalFee,GameTotalKost,ReceiptStatusId," +
+            "AmountPaidHD1,AmountPaidHD2,AmountPaidLD1,AmountPaidLD2,TotalAmountPaid,TotalAmountToPay")] GameReceipt gameReceipt)
         {
             if (id != gameReceipt.Id)
             {
@@ -176,7 +195,8 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                    .Include(gr => gr.HD1)
                    .Include(gr => gr.HD2)
                    .Include(gr => gr.LD1)
-                   .Include(gr => gr.LD2);
+                   .Include(gr => gr.LD2)
+                   .Include(gr => gr.ReceiptStatus);
                     gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost;
                     gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost;
                     gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost;
@@ -205,6 +225,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
             ViewData["PersonId1"] = new SelectList(_context.Person, "Id", "FullName", gameReceipt.PersonId1);
             ViewData["PersonId2"] = new SelectList(_context.Person, "Id", "FullName", gameReceipt.PersonId2);
             ViewData["PersonId3"] = new SelectList(_context.Person, "Id", "FullName", gameReceipt.PersonId3);
+            ViewData["ReceiptStatusId"] = new SelectList(_context.ReceiptStatus, "Id", "ReceiptStatusName", gameReceipt.ReceiptStatusId);
             return View(gameReceipt);
         }
 
@@ -221,7 +242,8 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                 .Include(g => g.HD1)
                 .Include(g => g.HD2)
                 .Include(g => g.LD1)
-                .Include(g => g.LD2)
+                .Include(gr => gr.LD2)
+                .Include(gr => gr.ReceiptStatus)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (gameReceipt == null)
             {

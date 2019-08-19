@@ -22,7 +22,7 @@ namespace TMP2019.Models.DataModels
         public string FullName { get { return string.Format("{0} {1} ", FirstName, LastName); } }
 
         //CName = Contact Name with Phonenumbers attached !
-        public string CName { get { return string.Format("{0} {1} ", FullName, PhoneNumbers); } }
+        public string CName { get { return string.Format("{0} {1} ", FullName, Ssn); } }
 
         [Display(Name = "Streetaddress")]
         public string StreetAddress { get; set; }
@@ -81,5 +81,19 @@ namespace TMP2019.Models.DataModels
         [ForeignKey("ClubId")]
         public Club Club { get; set; }
 
+
+        // Accounts !
+        [Display(Name = "Swish #")]
+        [DataType(DataType.PhoneNumber)]
+        public string SwishNumber { get; set; }
+
+        [Display(Name = "Bank #")]
+        public string BankAccount { get; set; }
+        
+        [Display(Name = "Bank")]
+        public string BankName { get; set; }
+
+        [Display(Name = "Swish# and Bank#")]
+        public string PaymentDetails { get { return string.Format("{0} {1}", SwishNumber, BankAccount); } }
     }
 }

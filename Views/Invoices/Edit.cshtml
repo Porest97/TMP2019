@@ -1,0 +1,111 @@
+﻿@model TMP2019.Models.DataModels.AccountingModels.DataModels.Invoice
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Invoice</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="InvoceHeader" class="control-label"></label>
+                <textarea asp-for="InvoceHeader" class="form-control"></textarea>
+                <span asp-validation-for="InvoceHeader" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompanyId" class="control-label"></label>
+                <select asp-for="CompanyId" class="form-control" asp-items="ViewBag.CompanyId"></select>
+                <span asp-validation-for="CompanyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompanyId1" class="control-label"></label>
+                <select asp-for="CompanyId1" class="form-control" asp-items="ViewBag.CompanyId1"></select>
+                <span asp-validation-for="CompanyId1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvoiceDate" class="control-label"></label>
+                <input asp-for="InvoiceDate" class="form-control" />
+                <span asp-validation-for="InvoiceDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Maturity" class="control-label"></label>
+                <input asp-for="Maturity" class="form-control" />
+                <span asp-validation-for="Maturity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaymentTerms" class="control-label"></label>
+                <input asp-for="PaymentTerms" class="form-control" />
+                <span asp-validation-for="PaymentTerms" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvoiceRowId" class="control-label"></label>
+                <select asp-for="InvoiceRowId" class="form-control" asp-items="ViewBag.InvoiceRowId"></select>
+                <span asp-validation-for="InvoiceRowId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvoiceRowId1" class="control-label"></label>
+                <select asp-for="InvoiceRowId1" class="form-control" asp-items="ViewBag.InvoiceRowId1"></select>
+                <span asp-validation-for="InvoiceRowId1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvoiceRowId2" class="control-label"></label>
+                <select asp-for="InvoiceRowId2" class="form-control" asp-items="ViewBag.InvoiceRowId2"></select>
+                <span asp-validation-for="InvoiceRowId2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvoiceRowId3" class="control-label"></label>
+                <select asp-for="InvoiceRowId3" class="form-control" asp-items="ViewBag.InvoiceRowId3"></select>
+                <span asp-validation-for="InvoiceRowId3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvoiceRowId4" class="control-label"></label>
+                <select asp-for="InvoiceRowId4" class="form-control" asp-items="ViewBag.InvoiceRowId4"></select>
+                <span asp-validation-for="InvoiceRowId4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvoiceRowId5" class="control-label"></label>
+                <select asp-for="InvoiceRowId5" class="form-control" asp-items="ViewBag.InvoiceRowId5"></select>
+                <span asp-validation-for="InvoiceRowId5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvoiceRowId6" class="control-label"></label>
+                <select asp-for="InvoiceRowId6" class="form-control" asp-items="ViewBag.InvoiceRowId6"></select>
+                <span asp-validation-for="InvoiceRowId6" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvoiceRowId7" class="control-label"></label>
+                <select asp-for="InvoiceRowId7" class="form-control" asp-items="ViewBag.InvoiceRowId7"></select>
+                <span asp-validation-for="InvoiceRowId7" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvoiceRowId8" class="control-label"></label>
+                <select asp-for="InvoiceRowId8" class="form-control" asp-items="ViewBag.InvoiceRowId8"></select>
+                <span asp-validation-for="InvoiceRowId8" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvoiceRowId9" class="control-label"></label>
+                <select asp-for="InvoiceRowId9" class="form-control" asp-items="ViewBag.InvoiceRowId9"></select>
+                <span asp-validation-for="InvoiceRowId9" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvoceFooter" class="control-label"></label>
+                <textarea asp-for="InvoceFooter" class="form-control"></textarea>
+                <span asp-validation-for="InvoceFooter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

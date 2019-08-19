@@ -4,8 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using TMP2019.Models.DataModels.TMPHockeyModels;
 
-namespace TMP2019.Models.DataModels.TMPHockeyModels
+namespace TMP2019.Models.DataModels.AccountingModels.DataModels
 {
     public class GameReceipt
     {
@@ -111,7 +112,38 @@ namespace TMP2019.Models.DataModels.TMPHockeyModels
         [DataType(DataType.Currency)]
         public int GameTotalKost { get; set; } = 0;
 
-       
+        //Accounting
+        [Display(Name = "Amount Paid HD1")]
+        [DataType(DataType.Currency)]
+        public int AmountPaidHD1 { get; set; }
+
+        
+        [Display(Name = "Amount Paid HD2")]
+        [DataType(DataType.Currency)]
+        public int AmountPaidHD2 { get; set; }
+
+        [Display(Name = "Amount Paid LD1")]
+        [DataType(DataType.Currency)]
+        public int AmountPaidLD1 { get; set; }
+
+        [Display(Name = "Amount Paid LD2")]
+        [DataType(DataType.Currency)]
+        public int AmountPaidLD2 { get; set; }
+
+        [Display(Name = "Total Amount Paid")]
+        [DataType(DataType.Currency)]
+        public int TotalAmountPaid { get; set; }
+
+        [Display(Name = "Total Amount To Pay")]
+        [DataType(DataType.Currency)]
+        public int TotalAmountToPay { get; set; }
+
+        [Display(Name = "Status")]
+        public int? ReceiptStatusId{ get; set; }
+        [Display(Name = "Status")]
+        [ForeignKey("ReceiptStatusId")]
+        public ReceiptStatus ReceiptStatus { get; set; }
+
 
     }
 }

@@ -1,4 +1,4 @@
-﻿@model TMP2019.Models.DataModels.TMPHockeyModels.GameReceipt
+﻿@model TMP2019.Models.DataModels.AccountingModels.DataModels.GameReceipt
 
 @{
     ViewData["Title"] = "Create";
@@ -19,6 +19,7 @@
             <div class="form-group">
                 <label asp-for="PersonId" class="control-label"></label>
                 <select asp-for="PersonId" class="form-control" asp-items="ViewBag.PersonId"></select>
+                <span asp-validation-for="PersonId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="HD1Fee" class="control-label"></label>
@@ -45,9 +46,11 @@
                 <input asp-for="HD1TotalFee" class="form-control" />
                 <span asp-validation-for="HD1TotalFee" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="PersonId1" class="control-label"></label>
                 <select asp-for="PersonId1" class="form-control" asp-items="ViewBag.PersonId1"></select>
+                <span asp-validation-for="PersonId1" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="HD2Fee" class="control-label"></label>
@@ -74,9 +77,11 @@
                 <input asp-for="HD2TotalFee" class="form-control" />
                 <span asp-validation-for="HD2TotalFee" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="PersonId2" class="control-label"></label>
                 <select asp-for="PersonId2" class="form-control" asp-items="ViewBag.PersonId2"></select>
+                <span asp-validation-for="PersonId2" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LD1Fee" class="control-label"></label>
@@ -103,9 +108,11 @@
                 <input asp-for="LD1TotalFee" class="form-control" />
                 <span asp-validation-for="LD1TotalFee" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="PersonId3" class="control-label"></label>
                 <select asp-for="PersonId3" class="form-control" asp-items="ViewBag.PersonId3"></select>
+                <span asp-validation-for="PersonId3" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LD2Fee" class="control-label"></label>
@@ -138,6 +145,11 @@
                 <span asp-validation-for="GameTotalKost" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="ReceiptStatusId" class="control-label"></label>
+                <select asp-for="ReceiptStatusId" class="form-control" asp-items="ViewBag.ReceiptStatusId"></select>
+                <span asp-validation-for="ReceiptStatusId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -145,6 +157,6 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-sm btn-success" asp-action="Index">Back to List</a>
 </div>
 

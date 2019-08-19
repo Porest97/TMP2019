@@ -61,7 +61,7 @@ namespace TMP2019.Controllers.AdminControllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,StreetAddress,ZipCode,City,Country,Ssn,PhoneNumber1,PhoneNumber2,Email,PersonTypeId,CompanyId,ClubId")] Person person)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,StreetAddress,ZipCode,City,Country,Ssn,PhoneNumber1,PhoneNumber2,Email,PersonTypeId,CompanyId,ClubId,SwishNumber,BankAccount,BankName")] Person person)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace TMP2019.Controllers.AdminControllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,StreetAddress,ZipCode,City,Country,Ssn,PhoneNumber1,PhoneNumber2,Email,PersonTypeId,CompanyId,ClubId")] Person person)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,StreetAddress,ZipCode,City,Country,Ssn,PhoneNumber1,PhoneNumber2,Email,PersonTypeId,CompanyId,ClubId,SwishNumber,BankAccount,BankName")] Person person)
         {
             if (id != person.Id)
             {

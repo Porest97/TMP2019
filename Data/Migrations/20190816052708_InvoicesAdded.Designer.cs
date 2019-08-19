@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TMP2019.Data;
 
 namespace TMP2019.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190816052708_InvoicesAdded")]
+    partial class InvoicesAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -220,97 +222,6 @@ namespace TMP2019.Data.Migrations
                     b.ToTable("Article");
                 });
 
-            modelBuilder.Entity("TMP2019.Models.DataModels.AccountingModels.DataModels.GameReceipt", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AmountPaidHD1");
-
-                    b.Property<int>("AmountPaidHD2");
-
-                    b.Property<int>("AmountPaidLD1");
-
-                    b.Property<int>("AmountPaidLD2");
-
-                    b.Property<int?>("GameId");
-
-                    b.Property<int>("GameTotalKost");
-
-                    b.Property<int>("HD1Alowens");
-
-                    b.Property<int>("HD1Fee");
-
-                    b.Property<int>("HD1LateGameKost");
-
-                    b.Property<int>("HD1TotalFee");
-
-                    b.Property<int>("HD1TravelKost");
-
-                    b.Property<int>("HD2Alowens");
-
-                    b.Property<int>("HD2Fee");
-
-                    b.Property<int>("HD2LateGameKost");
-
-                    b.Property<int>("HD2TotalFee");
-
-                    b.Property<int>("HD2TravelKost");
-
-                    b.Property<int>("LD1Alowens");
-
-                    b.Property<int>("LD1Fee");
-
-                    b.Property<int>("LD1LateGameKost");
-
-                    b.Property<int>("LD1TotalFee");
-
-                    b.Property<int>("LD1TravelKost");
-
-                    b.Property<int>("LD2Alowens");
-
-                    b.Property<int>("LD2Fee");
-
-                    b.Property<int>("LD2LateGameKost");
-
-                    b.Property<int>("LD2TotalFee");
-
-                    b.Property<int>("LD2TravelKost");
-
-                    b.Property<int?>("PersonId");
-
-                    b.Property<int?>("PersonId1");
-
-                    b.Property<int?>("PersonId2");
-
-                    b.Property<int?>("PersonId3");
-
-                    b.Property<int?>("ReceiptStatusId");
-
-                    b.Property<int?>("RecieptStatusId");
-
-                    b.Property<int>("TotalAmountPaid");
-
-                    b.Property<int>("TotalAmountToPay");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GameId");
-
-                    b.HasIndex("PersonId");
-
-                    b.HasIndex("PersonId1");
-
-                    b.HasIndex("PersonId2");
-
-                    b.HasIndex("PersonId3");
-
-                    b.HasIndex("RecieptStatusId");
-
-                    b.ToTable("GameReceipt");
-                });
-
             modelBuilder.Entity("TMP2019.Models.DataModels.AccountingModels.DataModels.Invoice", b =>
                 {
                     b.Property<int>("Id")
@@ -388,8 +299,6 @@ namespace TMP2019.Data.Migrations
 
                     b.Property<int?>("ArticleId");
 
-                    b.Property<double>("ArticlePrice");
-
                     b.Property<double>("Quantity");
 
                     b.Property<double>("RowTotal");
@@ -399,19 +308,6 @@ namespace TMP2019.Data.Migrations
                     b.HasIndex("ArticleId");
 
                     b.ToTable("InvoiceRow");
-                });
-
-            modelBuilder.Entity("TMP2019.Models.DataModels.AccountingModels.DataModels.ReceiptStatus", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ReceiptStatusName");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ReceiptStatus");
                 });
 
             modelBuilder.Entity("TMP2019.Models.DataModels.Activity", b =>
@@ -822,6 +718,79 @@ namespace TMP2019.Data.Migrations
                     b.ToTable("GameCategory");
                 });
 
+            modelBuilder.Entity("TMP2019.Models.DataModels.TMPHockeyModels.GameReceipt", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("GameId");
+
+                    b.Property<int>("GameTotalKost");
+
+                    b.Property<int>("HD1Alowens");
+
+                    b.Property<int>("HD1Fee");
+
+                    b.Property<int>("HD1LateGameKost");
+
+                    b.Property<int>("HD1TotalFee");
+
+                    b.Property<int>("HD1TravelKost");
+
+                    b.Property<int>("HD2Alowens");
+
+                    b.Property<int>("HD2Fee");
+
+                    b.Property<int>("HD2LateGameKost");
+
+                    b.Property<int>("HD2TotalFee");
+
+                    b.Property<int>("HD2TravelKost");
+
+                    b.Property<int>("LD1Alowens");
+
+                    b.Property<int>("LD1Fee");
+
+                    b.Property<int>("LD1LateGameKost");
+
+                    b.Property<int>("LD1TotalFee");
+
+                    b.Property<int>("LD1TravelKost");
+
+                    b.Property<int>("LD2Alowens");
+
+                    b.Property<int>("LD2Fee");
+
+                    b.Property<int>("LD2LateGameKost");
+
+                    b.Property<int>("LD2TotalFee");
+
+                    b.Property<int>("LD2TravelKost");
+
+                    b.Property<int?>("PersonId");
+
+                    b.Property<int?>("PersonId1");
+
+                    b.Property<int?>("PersonId2");
+
+                    b.Property<int?>("PersonId3");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GameId");
+
+                    b.HasIndex("PersonId");
+
+                    b.HasIndex("PersonId1");
+
+                    b.HasIndex("PersonId2");
+
+                    b.HasIndex("PersonId3");
+
+                    b.ToTable("GameReceipt");
+                });
+
             modelBuilder.Entity("TMP2019.Models.DataModels.TMPHockeyModels.GameStatus", b =>
                 {
                     b.Property<int>("Id")
@@ -925,33 +894,6 @@ namespace TMP2019.Data.Migrations
                     b.HasOne("TMP2019.Models.DataModels.Person", "Person")
                         .WithMany()
                         .HasForeignKey("PersonId");
-                });
-
-            modelBuilder.Entity("TMP2019.Models.DataModels.AccountingModels.DataModels.GameReceipt", b =>
-                {
-                    b.HasOne("TMP2019.Models.DataModels.TMPHockeyModels.Game", "Game")
-                        .WithMany()
-                        .HasForeignKey("GameId");
-
-                    b.HasOne("TMP2019.Models.DataModels.Person", "HD1")
-                        .WithMany()
-                        .HasForeignKey("PersonId");
-
-                    b.HasOne("TMP2019.Models.DataModels.Person", "HD2")
-                        .WithMany()
-                        .HasForeignKey("PersonId1");
-
-                    b.HasOne("TMP2019.Models.DataModels.Person", "LD1")
-                        .WithMany()
-                        .HasForeignKey("PersonId2");
-
-                    b.HasOne("TMP2019.Models.DataModels.Person", "LD2")
-                        .WithMany()
-                        .HasForeignKey("PersonId3");
-
-                    b.HasOne("TMP2019.Models.DataModels.AccountingModels.DataModels.ReceiptStatus", "ReceiptStatus")
-                        .WithMany()
-                        .HasForeignKey("RecieptStatusId");
                 });
 
             modelBuilder.Entity("TMP2019.Models.DataModels.AccountingModels.DataModels.Invoice", b =>
@@ -1167,6 +1109,29 @@ namespace TMP2019.Data.Migrations
                     b.HasOne("TMP2019.Models.DataModels.Team", "AwayTeam")
                         .WithMany()
                         .HasForeignKey("TeamId1");
+                });
+
+            modelBuilder.Entity("TMP2019.Models.DataModels.TMPHockeyModels.GameReceipt", b =>
+                {
+                    b.HasOne("TMP2019.Models.DataModels.TMPHockeyModels.Game", "Game")
+                        .WithMany()
+                        .HasForeignKey("GameId");
+
+                    b.HasOne("TMP2019.Models.DataModels.Person", "HD1")
+                        .WithMany()
+                        .HasForeignKey("PersonId");
+
+                    b.HasOne("TMP2019.Models.DataModels.Person", "HD2")
+                        .WithMany()
+                        .HasForeignKey("PersonId1");
+
+                    b.HasOne("TMP2019.Models.DataModels.Person", "LD1")
+                        .WithMany()
+                        .HasForeignKey("PersonId2");
+
+                    b.HasOne("TMP2019.Models.DataModels.Person", "LD2")
+                        .WithMany()
+                        .HasForeignKey("PersonId3");
                 });
 
             modelBuilder.Entity("TMP2019.Models.DataModels.Team", b =>
