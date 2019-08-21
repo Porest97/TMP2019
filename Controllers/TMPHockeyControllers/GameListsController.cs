@@ -99,5 +99,107 @@ namespace TMP2019.Controllers.TMPHockeyControllers
             };
             return View(gamesListViewModel);
         }
+        public IActionResult POrestGames()
+        {
+
+            var gamesListViewModel = new GamesListViewModel()
+            {
+                Games = _context.Game
+                        .Include(g => g.Arena)
+                        .Include(g => g.AwayTeam)
+                        .Include(g => g.GameCategory)
+                        .Include(g => g.HD1)
+                        .Include(g => g.HD2)
+                        .Include(g => g.HomeTeam)
+                        .Include(g => g.LD1)
+                        .Include(g => g.LD2)
+                        .Include(g => g.GameStatus)
+                        .Where(g => g.HD1.Id != 0 && g.PersonId == 4923 && g.GameStatusId == 1).ToList()
+                        
+            };
+            return View(gamesListViewModel);
+        }
+        public IActionResult POrestGamesStarted()
+        {
+
+            var gamesListViewModel = new GamesListViewModel()
+            {
+                Games = _context.Game
+                        .Include(g => g.Arena)
+                        .Include(g => g.AwayTeam)
+                        .Include(g => g.GameCategory)
+                        .Include(g => g.HD1)
+                        .Include(g => g.HD2)
+                        .Include(g => g.HomeTeam)
+                        .Include(g => g.LD1)
+                        .Include(g => g.LD2)
+                        .Include(g => g.GameStatus)
+                        .Where(g => g.HD1.Id != 0 && g.PersonId == 4923 && g.GameStatusId == 2).ToList()
+
+            };
+            return View(gamesListViewModel);
+        }
+        public IActionResult POrestGamesFinal()
+        {
+
+            var gamesListViewModel = new GamesListViewModel()
+            {
+                Games = _context.Game
+                        .Include(g => g.Arena)
+                        .Include(g => g.AwayTeam)
+                        .Include(g => g.GameCategory)
+                        .Include(g => g.HD1)
+                        .Include(g => g.HD2)
+                        .Include(g => g.HomeTeam)
+                        .Include(g => g.LD1)
+                        .Include(g => g.LD2)
+                        .Include(g => g.GameStatus)
+                        .Where(g => g.HD1.Id != 0 && g.PersonId == 4923 && g.GameStatusId == 3).ToList()
+
+            };
+            return View(gamesListViewModel);
+        }
+
+        public IActionResult POrestGamesArchived()
+        {
+
+            var gamesListViewModel = new GamesListViewModel()
+            {
+                Games = _context.Game
+                        .Include(g => g.Arena)
+                        .Include(g => g.AwayTeam)
+                        .Include(g => g.GameCategory)
+                        .Include(g => g.HD1)
+                        .Include(g => g.HD2)
+                        .Include(g => g.HomeTeam)
+                        .Include(g => g.LD1)
+                        .Include(g => g.LD2)
+                        .Include(g => g.GameStatus)
+                        .Where(g => g.PersonId == 4923 && g.GameStatusId == 4).ToList()
+                        
+            };
+            return View(gamesListViewModel);
+        }
+
+        public IActionResult ListArchGames()
+        {
+
+            var gamesListViewModel = new GamesListViewModel()
+            {
+                Games = _context.Game
+                        .Include(g => g.Arena)
+                        .Include(g => g.AwayTeam)
+                        .Include(g => g.GameCategory)
+                        .Include(g => g.HD1)
+                        .Include(g => g.HD2)
+                        .Include(g => g.HomeTeam)
+                        .Include(g => g.LD1)
+                        .Include(g => g.LD2)
+                        .Include(g => g.GameStatus)
+                        .Where(g => g.GameStatusId == 4).ToList()
+
+            };
+            return View(gamesListViewModel);
+        }
     }
 }
