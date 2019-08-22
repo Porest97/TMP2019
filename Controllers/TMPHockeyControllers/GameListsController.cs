@@ -175,7 +175,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                         .Include(g => g.LD1)
                         .Include(g => g.LD2)
                         .Include(g => g.GameStatus)
-                        .Where(g => g.PersonId == 4923 && g.GameStatusId == 4).ToList()
+                        .Where(g => g.GameStatusId == 4 && g.HD1.Id == 4923).ToList()
                         
             };
             return View(gamesListViewModel);
