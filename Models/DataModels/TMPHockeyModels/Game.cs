@@ -50,7 +50,7 @@ namespace TMP2019.Models.DataModels.TMPHockeyModels
         [Display(Name = "Score")]
         public string Result { get { return string.Format("{0} {1} {2}", HomeTeamScore, "-", AwayTeamScore); } }
 
-        [Display(Name = "Teams")]
+        [Display(Name = "Home - Away")]
         public string Teams { get { return string.Format("{0} {1} {2}", HomeTeam, "-", AwayTeam); } }
 
         [Display(Name = "HD")]

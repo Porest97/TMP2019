@@ -49,6 +49,8 @@ namespace TMP2019.Models.DataModels.TMPHockeyModels.ViewModels
         [Display(Name = "Score")]
         public string Result { get { return string.Format("{0} {1} {2}", HomeTeamScore, "-", AwayTeamScore); } }
 
+       
+
         [Display(Name = "HD")]
         public int? PersonId { get; set; }
         [Display(Name = "HD")]

@@ -60,7 +60,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Games.OrderBy(g=>g.GameDateTime))
+        @foreach (var item in Model.Games.OrderByDescending(g=>g.GameDateTime))
         {
             <tr>
                 <td>
@@ -106,6 +106,7 @@
                 <td>
                     <a class="btn btn-sm btn-success" asp-controller="Games" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                     <a class="btn btn-sm btn-success" asp-controller="Games" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a class="btn btn-sm btn-success" asp-controller="GameReceipts" asp-action="Create">Create Receipt</a>
                 </td>
             </tr>
         }

@@ -40,7 +40,8 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                         select g;
             if (!String.IsNullOrEmpty(searchString))
             {
-                games = games.Where(g => g.Arena.ArenaName.Contains(searchString) 
+                games = games.Where(g => g.Arena.ArenaName.Contains(searchString)
+               
                 
                 
                 
