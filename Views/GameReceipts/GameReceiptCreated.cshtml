@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<TMP2019.Models.DataModels.AccountingModels.DataModels.GameReceipt>
 
-    <h1>Game Receipts</h1>
+    <h1>Game Receipts Created</h1>
     <div class="row">
         <div class="col-sm-2">
             <p>Total Payment HD1:</p>
@@ -24,10 +24,14 @@
 
     <p>
         <a class="btn btn-sm btn-success" asp-action="Create">Create New</a>
+        
+        <a class="btn btn-sm btn-outline-success" asp-area="" asp-controller="GameReceipts" asp-action="GamesReceiptDTP">Game Receipts POREST  Status Due To Pay !</a>
+        <a class="btn btn-sm btn-outline-success" asp-area="" asp-controller="GameReceipts" asp-action="GamesReceiptPaid">Game Receipts POREST Status Paid !</a>
     </p>
     <table class="table table-striped">
         <thead>
             <tr>
+                <th>@Html.DisplayNameFor(model => model.Id)</th>
                 <th>@Html.DisplayNameFor(model => model.Game.GameDateTime)</th>
                 <th>@Html.DisplayNameFor(model => model.Game.Arena)</th>
                 <th>@Html.DisplayNameFor(model => model.Game.HomeTeam)</th>
@@ -35,30 +39,30 @@
 
                 <th>@Html.DisplayNameFor(model => model.HD1)</th>
                 @*  <th>@Html.DisplayNameFor(model => model.HD1Fee)</th>
-                    <th>@Html.DisplayNameFor(model => model.HD1TravelKost)</th>
-                    <th>@Html.DisplayNameFor(model => model.HD1Alowens)</th>
-                    <th>@Html.DisplayNameFor(model => model.HD1LateGameKost)</th>*@
+        <th>@Html.DisplayNameFor(model => model.HD1TravelKost)</th>
+        <th>@Html.DisplayNameFor(model => model.HD1Alowens)</th>
+        <th>@Html.DisplayNameFor(model => model.HD1LateGameKost)</th>*@
                 <th>@Html.DisplayNameFor(model => model.HD1TotalFee)</th>
 
                 <th>@Html.DisplayNameFor(model => model.HD2)</th>
                 @*   <th>@Html.DisplayNameFor(model => model.HD2Fee)</th>
-                    <th>@Html.DisplayNameFor(model => model.HD2TravelKost)</th>
-                    <th>@Html.DisplayNameFor(model => model.HD2Alowens)</th>
-                    <th>@Html.DisplayNameFor(model => model.HD2LateGameKost)</th>*@
+        <th>@Html.DisplayNameFor(model => model.HD2TravelKost)</th>
+        <th>@Html.DisplayNameFor(model => model.HD2Alowens)</th>
+        <th>@Html.DisplayNameFor(model => model.HD2LateGameKost)</th>*@
                 <th>@Html.DisplayNameFor(model => model.HD2TotalFee)</th>
 
                 <th>@Html.DisplayNameFor(model => model.LD1)</th>
                 @*  <th>@Html.DisplayNameFor(model => model.LD1Fee)</th>
-                    <th>@Html.DisplayNameFor(model => model.LD1TravelKost)</th>
-                    <th>@Html.DisplayNameFor(model => model.LD1Alowens)</th>
-                    <th>@Html.DisplayNameFor(model => model.LD1LateGameKost)</th>*@
+        <th>@Html.DisplayNameFor(model => model.LD1TravelKost)</th>
+        <th>@Html.DisplayNameFor(model => model.LD1Alowens)</th>
+        <th>@Html.DisplayNameFor(model => model.LD1LateGameKost)</th>*@
                 <th>@Html.DisplayNameFor(model => model.LD1TotalFee)</th>
 
                 <th>@Html.DisplayNameFor(model => model.LD2)</th>
                 @* <th>@Html.DisplayNameFor(model => model.LD2Fee)</th>
-                    <th>@Html.DisplayNameFor(model => model.LD2TravelKost)</th>
-                    <th>@Html.DisplayNameFor(model => model.LD2Alowens)</th>
-                    <th>@Html.DisplayNameFor(model => model.LD2LateGameKost)</th>*@
+        <th>@Html.DisplayNameFor(model => model.LD2TravelKost)</th>
+        <th>@Html.DisplayNameFor(model => model.LD2Alowens)</th>
+        <th>@Html.DisplayNameFor(model => model.LD2LateGameKost)</th>*@
                 <th>@Html.DisplayNameFor(model => model.LD2TotalFee)</th>
 
                 <th>@Html.DisplayNameFor(model => model.GameTotalKost)</th>
@@ -70,8 +74,9 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.OrderBy(g=>g.Game.GameNumber)) {
+            @foreach (var item in Model.OrderBy(g=>g.Game.GameDateTime)) {
             <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
                 <td>@Html.DisplayFor(modelItem => item.Game.GameDateTime)</td>
                 <td>@Html.DisplayFor(modelItem => item.Game.Arena.ArenaName)</td>
                 <td>@Html.DisplayFor(modelItem => item.Game.HomeTeam.TeamName)</td>
@@ -79,30 +84,30 @@
 
                 <td>@Html.DisplayFor(modelItem => item.HD1.FullName)</td>
                 @*<td>@Html.DisplayFor(modelItem => item.HD1Fee)</td>
-                    <td>@Html.DisplayFor(modelItem => item.HD1TravelKost)</td>
-                    <td>@Html.DisplayFor(modelItem => item.HD1Alowens)</td>
-                    <td>@Html.DisplayFor(modelItem => item.HD1LateGameKost)</td>*@
+        <td>@Html.DisplayFor(modelItem => item.HD1TravelKost)</td>
+        <td>@Html.DisplayFor(modelItem => item.HD1Alowens)</td>
+        <td>@Html.DisplayFor(modelItem => item.HD1LateGameKost)</td>*@
                 <td>@Html.DisplayFor(modelItem => item.HD1TotalFee)</td>
 
                 <td>@Html.DisplayFor(modelItem => item.HD2.FullName)</td>
                 @*   <td>@Html.DisplayFor(modelItem => item.HD2Fee)</td>
-                    <td>@Html.DisplayFor(modelItem => item.HD2TravelKost)</td>
-                    <td>@Html.DisplayFor(modelItem => item.HD2Alowens)</td>
-                    <td>@Html.DisplayFor(modelItem => item.HD2LateGameKost)</td>*@
+        <td>@Html.DisplayFor(modelItem => item.HD2TravelKost)</td>
+        <td>@Html.DisplayFor(modelItem => item.HD2Alowens)</td>
+        <td>@Html.DisplayFor(modelItem => item.HD2LateGameKost)</td>*@
                 <td>@Html.DisplayFor(modelItem => item.HD2TotalFee)</td>
 
                 <td>@Html.DisplayFor(modelItem => item.LD1.FullName)</td>
                 @*  <td>@Html.DisplayFor(modelItem => item.LD1Fee)</td>
-                    <td>@Html.DisplayFor(modelItem => item.LD1TravelKost)</td>
-                    <td>@Html.DisplayFor(modelItem => item.LD1Alowens)</td>
-                    <td>@Html.DisplayFor(modelItem => item.LD1LateGameKost)</td>*@
+        <td>@Html.DisplayFor(modelItem => item.LD1TravelKost)</td>
+        <td>@Html.DisplayFor(modelItem => item.LD1Alowens)</td>
+        <td>@Html.DisplayFor(modelItem => item.LD1LateGameKost)</td>*@
                 <td>@Html.DisplayFor(modelItem => item.LD1TotalFee)</td>
 
                 <td>@Html.DisplayFor(modelItem => item.LD2.FullName)</td>
                 @*   <td>@Html.DisplayFor(modelItem => item.LD2Fee)</td>
-                    <td>@Html.DisplayFor(modelItem => item.LD2TravelKost)</td>
-                    <td>@Html.DisplayFor(modelItem => item.LD2Alowens)</td>
-                    <td>@Html.DisplayFor(modelItem => item.LD2LateGameKost)</td>*@
+        <td>@Html.DisplayFor(modelItem => item.LD2TravelKost)</td>
+        <td>@Html.DisplayFor(modelItem => item.LD2Alowens)</td>
+        <td>@Html.DisplayFor(modelItem => item.LD2LateGameKost)</td>*@
                 <td>@Html.DisplayFor(modelItem => item.LD2TotalFee)</td>
 
                 <td>@Html.DisplayFor(modelItem => item.GameTotalKost)</td>

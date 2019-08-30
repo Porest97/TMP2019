@@ -51,10 +51,10 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                 .Include(gr => gr.LD2)
                 .Include(gr => gr.ReceiptStatus);
                 
-            gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost;
-            gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost;
-            gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost;
-            gameReceipt.LD2TotalFee = gameReceipt.LD2Fee + gameReceipt.LD2TravelKost + gameReceipt.LD2Alowens + gameReceipt.LD2LateGameKost;
+            gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost + gameReceipt.HD1Other;
+            gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost + gameReceipt.HD2Other;
+            gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost + gameReceipt.LD1Other;
+            gameReceipt.LD2TotalFee = gameReceipt.LD2Fee + gameReceipt.LD2TravelKost + gameReceipt.LD2Alowens + gameReceipt.LD2LateGameKost + gameReceipt.LD2Other;
             gameReceipt.GameTotalKost = gameReceipt.HD1TotalFee + gameReceipt.HD2TotalFee + gameReceipt.LD1TotalFee + gameReceipt.LD2TotalFee;
             return View(gameReceipt);
         }
@@ -108,7 +108,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
             ("Id,GameId,PersonId,PersonId1,PersonId2,PersonId3,HD1Fee," +
             "HD1TravelKost,HD1Alowens,HD1LateGameKost,HD1TotalFee,HD2Fee,HD2TravelKost,HD2Alowens,HD2LateGameKost," +
             "HD2TotalFee,LD1Fee,LD1TravelKost,LD1Alowens,LD1LateGameKost,LD1TotalFee,LD2Fee,LD2TravelKost,LD2Alowens," +
-            "LD2LateGameKost,LD2TotalFee,GameTotalKost,ReceiptStatusId," +
+            "LD2LateGameKost,LD2TotalFee,GameTotalKost,ReceiptStatusId,HD1Other,HD2Other,LD1Other,LD2Other," +
             "AmountPaidHD1,AmountPaidHD2,AmountPaidLD1,AmountPaidLD2,TotalAmountPaid,TotalAmountToPay")] GameReceipt gameReceipt)
         {
             if (ModelState.IsValid)
@@ -123,15 +123,15 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                 .Include(gr => gr.LD1)
                 .Include(gr => gr.LD2)
                 .Include(gr => gr.ReceiptStatus);
-                gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost;
-                gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost;
-                gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost;
-                gameReceipt.LD2TotalFee = gameReceipt.LD2Fee + gameReceipt.LD2TravelKost + gameReceipt.LD2Alowens + gameReceipt.LD2LateGameKost;
+                gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost + gameReceipt.HD1Other;
+                gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost + gameReceipt.HD2Other;
+                gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost + gameReceipt.LD1Other;
+                gameReceipt.LD2TotalFee = gameReceipt.LD2Fee + gameReceipt.LD2TravelKost + gameReceipt.LD2Alowens + gameReceipt.LD2LateGameKost + gameReceipt.LD2Other;
                 gameReceipt.GameTotalKost = gameReceipt.HD1TotalFee + gameReceipt.HD2TotalFee + gameReceipt.LD1TotalFee + gameReceipt.LD2TotalFee;
 
                 _context.Add(gameReceipt);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(GameReceiptCreated));
             }
             //ViewData["ArenaId"] = new SelectList(_context.Arena, "Id", "ArenaName", gameReceipt.Game.ArenaId);
             ViewData["GameId"] = new SelectList(_context.Game, "Id", "GameNumber", gameReceipt.GameId);
@@ -156,7 +156,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
             {
                 return NotFound();
             }
-            //ViewData["ArenaId"] = new SelectList(_context.Arena, "Id", "ArenaName", gameReceipt.Game.ArenaId);
+           
             ViewData["GameId"] = new SelectList(_context.Game, "Id", "GameNumber", gameReceipt.GameId);
             ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FullName", gameReceipt.PersonId);
             ViewData["PersonId1"] = new SelectList(_context.Person, "Id", "FullName", gameReceipt.PersonId1);
@@ -175,7 +175,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
             ("Id,GameId,PersonId,PersonId1,PersonId2,PersonId3,HD1Fee," +
             "HD1TravelKost,HD1Alowens,HD1LateGameKost,HD1TotalFee,HD2Fee,HD2TravelKost,HD2Alowens,HD2LateGameKost," +
             "HD2TotalFee,LD1Fee,LD1TravelKost,LD1Alowens,LD1LateGameKost,LD1TotalFee,LD2Fee,LD2TravelKost,LD2Alowens," +
-            "LD2LateGameKost,LD2TotalFee,GameTotalKost,ReceiptStatusId," +
+            "LD2LateGameKost,LD2TotalFee,GameTotalKost,ReceiptStatusId,HD1Other,HD2Other,LD1Other,LD2Other," +
             "AmountPaidHD1,AmountPaidHD2,AmountPaidLD1,AmountPaidLD2,TotalAmountPaid,TotalAmountToPay")] GameReceipt gameReceipt)
         {
             if (id != gameReceipt.Id)
@@ -197,10 +197,10 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                    .Include(gr => gr.LD1)
                    .Include(gr => gr.LD2)
                    .Include(gr => gr.ReceiptStatus);
-                    gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost;
-                    gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost;
-                    gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost;
-                    gameReceipt.LD2TotalFee = gameReceipt.LD2Fee + gameReceipt.LD2TravelKost + gameReceipt.LD2Alowens + gameReceipt.LD2LateGameKost;
+                    gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost + gameReceipt.HD1Other;
+                    gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost + gameReceipt.HD2Other;
+                    gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost + gameReceipt.LD1Other;
+                    gameReceipt.LD2TotalFee = gameReceipt.LD2Fee + gameReceipt.LD2TravelKost + gameReceipt.LD2Alowens + gameReceipt.LD2LateGameKost + gameReceipt.LD2Other;
                     gameReceipt.GameTotalKost = gameReceipt.HD1TotalFee + gameReceipt.HD2TotalFee + gameReceipt.LD1TotalFee + gameReceipt.LD2TotalFee;
 
                     _context.Update(gameReceipt);
@@ -217,9 +217,9 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(GameReceiptCreated));
             }
-            //ViewData["ArenaId"] = new SelectList(_context.Arena, "Id", "ArenaName", gameReceipt.Game.ArenaId);
+            
             ViewData["GameId"] = new SelectList(_context.Game, "Id", "GameNumber", gameReceipt.GameId);
             ViewData["PersonId"] = new SelectList(_context.Person, "Id", "FullName", gameReceipt.PersonId);
             ViewData["PersonId1"] = new SelectList(_context.Person, "Id", "FullName", gameReceipt.PersonId1);
@@ -267,7 +267,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
 
 
         //// GET: GameReceipts
-        public async Task<IActionResult> GameReceipt()
+        public async Task<IActionResult> GameReceiptCreated()
         {
             var applicationDbContext = _context.GameReceipt
                 .Include(gr => gr.Game)
@@ -284,7 +284,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
 
         //// GET: GameReceipts HttpPost !
         [HttpPost]
-        public IActionResult GameReceipt(GameReceipt gameReceipt)
+        public IActionResult GameReceiptCreated(GameReceipt gameReceipt)
         {
             var applicationDbContext = _context.GameReceipt
                 .Include(gr => gr.Game)
@@ -297,10 +297,10 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                 .Include(gr => gr.LD2)
                 .Include(gr => gr.ReceiptStatus).Where(gr => gr.PersonId == 4923 && gr.ReceiptStatusId == 1);
 
-            gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost;
-            gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost;
-            gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost;
-            gameReceipt.LD2TotalFee = gameReceipt.LD2Fee + gameReceipt.LD2TravelKost + gameReceipt.LD2Alowens + gameReceipt.LD2LateGameKost;
+            gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost + gameReceipt.HD1Other;
+            gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost + gameReceipt.HD2Other;
+            gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost + gameReceipt.LD1Other;
+            gameReceipt.LD2TotalFee = gameReceipt.LD2Fee + gameReceipt.LD2TravelKost + gameReceipt.LD2Alowens + gameReceipt.LD2LateGameKost + gameReceipt.LD2Other;
             gameReceipt.GameTotalKost = gameReceipt.HD1TotalFee + gameReceipt.HD2TotalFee + gameReceipt.LD1TotalFee + gameReceipt.LD2TotalFee;
             return View(gameReceipt);
         }
@@ -336,10 +336,10 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                 .Include(gr => gr.LD2)
                 .Include(gr => gr.ReceiptStatus).Where(gr => gr.PersonId == 4923 && gr.ReceiptStatusId == 2);
 
-            gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost;
-            gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost;
-            gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost;
-            gameReceipt.LD2TotalFee = gameReceipt.LD2Fee + gameReceipt.LD2TravelKost + gameReceipt.LD2Alowens + gameReceipt.LD2LateGameKost;
+            gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost + gameReceipt.HD1Other;
+            gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost + gameReceipt.HD2Other;
+            gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost + gameReceipt.LD1Other;
+            gameReceipt.LD2TotalFee = gameReceipt.LD2Fee + gameReceipt.LD2TravelKost + gameReceipt.LD2Alowens + gameReceipt.LD2LateGameKost + gameReceipt.LD2Other;
             gameReceipt.GameTotalKost = gameReceipt.HD1TotalFee + gameReceipt.HD2TotalFee + gameReceipt.LD1TotalFee + gameReceipt.LD2TotalFee;
             return View(gameReceipt);
         }
@@ -375,10 +375,10 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                 .Include(gr => gr.LD2)
                 .Include(gr => gr.ReceiptStatus).Where(gr => gr.PersonId == 4923 && gr.ReceiptStatusId == 3);
 
-            gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost;
-            gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost;
-            gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost;
-            gameReceipt.LD2TotalFee = gameReceipt.LD2Fee + gameReceipt.LD2TravelKost + gameReceipt.LD2Alowens + gameReceipt.LD2LateGameKost;
+            gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost + gameReceipt.HD1Other;
+            gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost + gameReceipt.HD2Other;
+            gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost + gameReceipt.LD1Other;
+            gameReceipt.LD2TotalFee = gameReceipt.LD2Fee + gameReceipt.LD2TravelKost + gameReceipt.LD2Alowens + gameReceipt.LD2LateGameKost + gameReceipt.LD2Other;
             gameReceipt.GameTotalKost = gameReceipt.HD1TotalFee + gameReceipt.HD2TotalFee + gameReceipt.LD1TotalFee + gameReceipt.LD2TotalFee;
             return View(gameReceipt);
         }

@@ -9,6 +9,7 @@ namespace TMP2019.Models.DataModels
 {
     public class Receipt
     {
+        [Display(Name = "#")]
         public int Id { get; set; }
 
         [Display(Name = "Match")]

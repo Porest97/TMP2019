@@ -10,6 +10,7 @@ namespace TMP2019.Models.DataModels.AccountingModels.DataModels
 {
     public class GameReceipt
     {
+
         public int Id { get; set; }
 
         [Display(Name = "Game")]
@@ -43,6 +44,8 @@ namespace TMP2019.Models.DataModels.AccountingModels.DataModels
         public Person LD2 { get; set; }
 
         // Fee calculations !
+        // HD1
+
         [Display(Name = "FEE")]
         [DataType(DataType.Currency)]
         public int HD1Fee { get; set; } = 0;
@@ -55,10 +58,14 @@ namespace TMP2019.Models.DataModels.AccountingModels.DataModels
         [Display(Name = "Lategame")]
         [DataType(DataType.Currency)]
         public int HD1LateGameKost { get; set; } = 0;
+        [Display(Name = "Other")]
+        [DataType(DataType.Currency)]
+        public int HD1Other { get; set; } = 0;
         [Display(Name = "Total")]
         [DataType(DataType.Currency)]
         public int HD1TotalFee { get; set; } = 0;
 
+        //HD2
         [Display(Name = "FEE")]
         [DataType(DataType.Currency)]
         public int HD2Fee { get; set; } = 0;
@@ -71,10 +78,14 @@ namespace TMP2019.Models.DataModels.AccountingModels.DataModels
         [Display(Name = "Lategame")]
         [DataType(DataType.Currency)]
         public int HD2LateGameKost { get; set; } = 0;
+        [Display(Name = "Other")]
+        [DataType(DataType.Currency)]
+        public int HD2Other { get; set; } = 0;
         [Display(Name = "Total")]
         [DataType(DataType.Currency)]
         public int HD2TotalFee { get; set; } = 0;
 
+        // LD1
         [Display(Name = "FEE")]
         [DataType(DataType.Currency)]
         public int LD1Fee { get; set; } = 0;
@@ -87,11 +98,14 @@ namespace TMP2019.Models.DataModels.AccountingModels.DataModels
         [Display(Name = "Lategame")]
         [DataType(DataType.Currency)]
         public int LD1LateGameKost { get; set; } = 0;
+        [Display(Name = "Other")]
+        [DataType(DataType.Currency)]
+        public int LD1Other { get; set; } = 0;
         [Display(Name = "Total")]
         [DataType(DataType.Currency)]
         public int LD1TotalFee { get; set; } = 0;
 
-
+        //LD2
         [Display(Name = "FEE")]
         [DataType(DataType.Currency)]
         public int LD2Fee { get; set; } = 0;
@@ -104,10 +118,13 @@ namespace TMP2019.Models.DataModels.AccountingModels.DataModels
         [Display(Name = "Lategame")]
         [DataType(DataType.Currency)]
         public int LD2LateGameKost { get; set; } = 0;
+        [Display(Name = "Lategame")]
+        [DataType(DataType.Currency)]
+        public int LD2Other { get; set; } = 0;
         [Display(Name = "Total")]
         [DataType(DataType.Currency)]
         public int LD2TotalFee { get; set; } = 0;
-
+        // The Game total
         [Display(Name = "Game Total")]
         [DataType(DataType.Currency)]
         public int GameTotalKost { get; set; } = 0;

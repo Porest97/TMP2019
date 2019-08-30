@@ -1,11 +1,5 @@
 ﻿@model TMP2019.Models.DataModels.AccountingModels.DataModels.GameReceipt
 
-@{
-    ViewData["Title"] = "Create";
-}
-
-<h1>Create</h1>
-
 <h4>GameReceipt</h4>
 <hr />
 <div class="row">
@@ -14,12 +8,23 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="GameId" class="control-label"></label>
-                <select asp-for="GameId" class="form-control" asp-items="ViewBag.GameId"></select>
+                <select asp-for="GameId" class ="form-control" asp-items="ViewBag.GameId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="PersonId" class="control-label"></label>
-                <select asp-for="PersonId" class="form-control" asp-items="ViewBag.PersonId"></select>
-                <span asp-validation-for="PersonId" class="text-danger"></span>
+                <select asp-for="PersonId" class ="form-control" asp-items="ViewBag.PersonId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonId1" class="control-label"></label>
+                <select asp-for="PersonId1" class ="form-control" asp-items="ViewBag.PersonId1"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonId2" class="control-label"></label>
+                <select asp-for="PersonId2" class ="form-control" asp-items="ViewBag.PersonId2"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonId3" class="control-label"></label>
+                <select asp-for="PersonId3" class ="form-control" asp-items="ViewBag.PersonId3"></select>
             </div>
             <div class="form-group">
                 <label asp-for="HD1Fee" class="control-label"></label>
@@ -42,15 +47,14 @@
                 <span asp-validation-for="HD1LateGameKost" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="HD1Other" class="control-label"></label>
+                <input asp-for="HD1Other" class="form-control" />
+                <span asp-validation-for="HD1Other" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="HD1TotalFee" class="control-label"></label>
                 <input asp-for="HD1TotalFee" class="form-control" />
                 <span asp-validation-for="HD1TotalFee" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="PersonId1" class="control-label"></label>
-                <select asp-for="PersonId1" class="form-control" asp-items="ViewBag.PersonId1"></select>
-                <span asp-validation-for="PersonId1" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="HD2Fee" class="control-label"></label>
@@ -73,15 +77,14 @@
                 <span asp-validation-for="HD2LateGameKost" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="HD2Other" class="control-label"></label>
+                <input asp-for="HD2Other" class="form-control" />
+                <span asp-validation-for="HD2Other" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="HD2TotalFee" class="control-label"></label>
                 <input asp-for="HD2TotalFee" class="form-control" />
                 <span asp-validation-for="HD2TotalFee" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="PersonId2" class="control-label"></label>
-                <select asp-for="PersonId2" class="form-control" asp-items="ViewBag.PersonId2"></select>
-                <span asp-validation-for="PersonId2" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LD1Fee" class="control-label"></label>
@@ -104,15 +107,14 @@
                 <span asp-validation-for="LD1LateGameKost" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="LD1Other" class="control-label"></label>
+                <input asp-for="LD1Other" class="form-control" />
+                <span asp-validation-for="LD1Other" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="LD1TotalFee" class="control-label"></label>
                 <input asp-for="LD1TotalFee" class="form-control" />
                 <span asp-validation-for="LD1TotalFee" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="PersonId3" class="control-label"></label>
-                <select asp-for="PersonId3" class="form-control" asp-items="ViewBag.PersonId3"></select>
-                <span asp-validation-for="PersonId3" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LD2Fee" class="control-label"></label>
@@ -135,6 +137,11 @@
                 <span asp-validation-for="LD2LateGameKost" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="LD2Other" class="control-label"></label>
+                <input asp-for="LD2Other" class="form-control" />
+                <span asp-validation-for="LD2Other" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="LD2TotalFee" class="control-label"></label>
                 <input asp-for="LD2TotalFee" class="form-control" />
                 <span asp-validation-for="LD2TotalFee" class="text-danger"></span>
@@ -145,9 +152,38 @@
                 <span asp-validation-for="GameTotalKost" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="AmountPaidHD1" class="control-label"></label>
+                <input asp-for="AmountPaidHD1" class="form-control" />
+                <span asp-validation-for="AmountPaidHD1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AmountPaidHD2" class="control-label"></label>
+                <input asp-for="AmountPaidHD2" class="form-control" />
+                <span asp-validation-for="AmountPaidHD2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AmountPaidLD1" class="control-label"></label>
+                <input asp-for="AmountPaidLD1" class="form-control" />
+                <span asp-validation-for="AmountPaidLD1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AmountPaidLD2" class="control-label"></label>
+                <input asp-for="AmountPaidLD2" class="form-control" />
+                <span asp-validation-for="AmountPaidLD2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalAmountPaid" class="control-label"></label>
+                <input asp-for="TotalAmountPaid" class="form-control" />
+                <span asp-validation-for="TotalAmountPaid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalAmountToPay" class="control-label"></label>
+                <input asp-for="TotalAmountToPay" class="form-control" />
+                <span asp-validation-for="TotalAmountToPay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="ReceiptStatusId" class="control-label"></label>
-                <select asp-for="ReceiptStatusId" class="form-control" asp-items="ViewBag.ReceiptStatusId"></select>
-                <span asp-validation-for="ReceiptStatusId" class="text-danger"></span>
+                <select asp-for="ReceiptStatusId" class ="form-control" asp-items="ViewBag.ReceiptStatusId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -157,6 +193,6 @@
 </div>
 
 <div>
-    <a class="btn btn-sm btn-success" asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 

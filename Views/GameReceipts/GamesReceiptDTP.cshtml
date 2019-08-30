@@ -24,6 +24,9 @@
 
     <p>
         <a class="btn btn-sm btn-success" asp-action="Create">Create New</a>
+
+        <a class="btn btn-sm btn-outline-success" asp-area="" asp-controller="GameReceipts" asp-action="GameReceiptCreated">Game Receipts POREST  Status Created !</a>
+        <a class="btn btn-sm btn-outline-success" asp-area="" asp-controller="GameReceipts" asp-action="GamesReceiptPaid">Game Receipts POREST Status Paid !</a>
     </p>
     <table class="table table-striped">
         <thead>
@@ -70,7 +73,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.OrderBy(g => g.Game.GameNumber))
+            @foreach (var item in Model.OrderByDescending(g => g.Game.GameDateTime))
             {
                 <tr>
                     <td>@Html.DisplayFor(modelItem => item.Game.GameDateTime)</td>
