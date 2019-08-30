@@ -34,7 +34,7 @@ namespace TMP2019.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                if (User.IsInRole("Admin")) return RedirectToAction("TMPHockey", "Admin");
+                if (User.IsInRole("Admin")) return RedirectToAction("Home", "TMPHockey");
                 else
                     return RedirectToAction("Index", "Guest");
             }
