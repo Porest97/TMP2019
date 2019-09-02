@@ -3,19 +3,10 @@
     ViewData["Title"] = "AccountingIndex";
 }
 
-<h1>Accounting Index</h1>
+<h1>Game Receipts</h1>
 
 <ul class="navbar-nav flex-grow-1">
-
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Invoices" asp-action="Index">Invoices</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="InvoiceRows" asp-action="Index">InvoiceRows</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Articles" asp-action="Index">Articles</a>
-    </li>
+       
     <li class="nav-item">
         <a class="nav-link text-dark" asp-area="" asp-controller="GameReceipts" asp-action="GameReceiptCreated">Game Receipts POREST  Status Created !</a>
     </li>
@@ -25,4 +16,16 @@
     <li class="nav-item">
         <a class="nav-link text-dark" asp-area="" asp-controller="GameReceipts" asp-action="GamesReceiptPaid">Game Receipts POREST Status Paid !</a>
     </li>
+</ul>
+
+<h1>Referee Fees Handling</h1>
+<ul class="navbar-nav flex-grow-1">
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="RefFees" asp-action="Index">Referee Fees</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="FeeCategories" asp-action="Index">Referee Fee Categories</a>
+    </li>
+    
 </ul>
