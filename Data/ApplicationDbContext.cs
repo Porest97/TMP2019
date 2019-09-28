@@ -40,5 +40,7 @@ namespace TMP2019.Data
         public DbSet<TMP2019.Models.DataModels.AccountingModels.DataModels.Invoice> Invoice { get; set; }
         public DbSet<TMP2019.Models.DataModels.AccountingModels.DataModels.RefFee> RefFee { get; set; }
         public DbSet<TMP2019.Models.DataModels.AccountingModels.DataModels.FeeCategory> FeeCategory { get; set; }
+        public DbSet<TMP2019.Models.DataModels.GamesToActivity> GamesToActivity { get; set; }
+        public DbSet<TMP2019.Models.DataModels.PeopleToActivity> PeopleToActivity { get; set; }
     }
 }

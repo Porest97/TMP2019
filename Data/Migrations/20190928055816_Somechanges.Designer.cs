@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TMP2019.Data;
 
 namespace TMP2019.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190928055816_Somechanges")]
+    partial class Somechanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -579,25 +581,6 @@ namespace TMP2019.Data.Migrations
                     b.ToTable("District");
                 });
 
-            modelBuilder.Entity("TMP2019.Models.DataModels.GamesToActivity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("ActivityId");
-
-                    b.Property<int?>("GameId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ActivityId");
-
-                    b.HasIndex("GameId");
-
-                    b.ToTable("GamesToActivity");
-                });
-
             modelBuilder.Entity("TMP2019.Models.DataModels.Match", b =>
                 {
                     b.Property<int>("Id")
@@ -664,25 +647,6 @@ namespace TMP2019.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MatchCategory");
-                });
-
-            modelBuilder.Entity("TMP2019.Models.DataModels.PeopleToActivity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("ActivityId");
-
-                    b.Property<int?>("PersonId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ActivityId");
-
-                    b.HasIndex("PersonId");
-
-                    b.ToTable("PeopleToActivity");
                 });
 
             modelBuilder.Entity("TMP2019.Models.DataModels.Person", b =>
@@ -1136,17 +1100,6 @@ namespace TMP2019.Data.Migrations
                         .HasForeignKey("DistrictId");
                 });
 
-            modelBuilder.Entity("TMP2019.Models.DataModels.GamesToActivity", b =>
-                {
-                    b.HasOne("TMP2019.Models.DataModels.Activity", "Activity")
-                        .WithMany()
-                        .HasForeignKey("ActivityId");
-
-                    b.HasOne("TMP2019.Models.DataModels.TMPHockeyModels.Game", "Game")
-                        .WithMany()
-                        .HasForeignKey("GameId");
-                });
-
             modelBuilder.Entity("TMP2019.Models.DataModels.Match", b =>
                 {
                     b.HasOne("TMP2019.Models.DataModels.Arena", "Arena")
@@ -1184,17 +1137,6 @@ namespace TMP2019.Data.Migrations
                     b.HasOne("TMP2019.Models.DataModels.Tournament")
                         .WithMany("Matches")
                         .HasForeignKey("TournamentId");
-                });
-
-            modelBuilder.Entity("TMP2019.Models.DataModels.PeopleToActivity", b =>
-                {
-                    b.HasOne("TMP2019.Models.DataModels.Activity", "Activity")
-                        .WithMany()
-                        .HasForeignKey("ActivityId");
-
-                    b.HasOne("TMP2019.Models.DataModels.Person", "Person")
-                        .WithMany()
-                        .HasForeignKey("PersonId");
                 });
 
             modelBuilder.Entity("TMP2019.Models.DataModels.Person", b =>
