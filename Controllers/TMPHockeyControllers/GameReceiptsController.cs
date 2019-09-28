@@ -266,7 +266,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
 
 
 
-        //// GET: GameReceipts
+        //// GET: GameReceiptsCreated id=Porest !
         public async Task<IActionResult> GameReceiptCreated()
         {
             var applicationDbContext = _context.GameReceipt
@@ -282,7 +282,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-        //// GET: GameReceipts HttpPost !
+        //// GET: GameReceiptsCreated id=Porest HttpPost !
         [HttpPost]
         public IActionResult GameReceiptCreated(GameReceipt gameReceipt)
         {
@@ -305,7 +305,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
             return View(gameReceipt);
         }
 
-        //// GET: GamesReceipt Status = Due To Pay
+        //// GET: GamesReceipt Status = Due To Pay and Person = 4923
         public async Task<IActionResult> GamesReceiptDTP()
         {
             var applicationDbContext = _context.GameReceipt
@@ -321,7 +321,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-        ////// GET: GamesReceipt Status = Due To Pay HttpPost !
+        ////// GET: GamesReceipt Status = Due To Pay HttpPost and Person = 4923!
         [HttpPost]
         public IActionResult GamesReceiptDTP(GameReceipt gameReceipt)
         {
@@ -344,7 +344,46 @@ namespace TMP2019.Controllers.TMPHockeyControllers
             return View(gameReceipt);
         }
 
-        //// GET: GamesReceipt Status = Paid
+        //// GET: GamesReceipt Status = Due To Pay and Person = 4923
+        public async Task<IActionResult> GamesReceiptDTPAll()
+        {
+            var applicationDbContext = _context.GameReceipt
+                .Include(gr => gr.Game)
+                .Include(gr => gr.Game.Arena)
+                .Include(gr => gr.Game.HomeTeam)
+                .Include(gr => gr.Game.AwayTeam)
+                .Include(gr => gr.HD1)
+                .Include(gr => gr.HD2)
+                .Include(gr => gr.LD1)
+                .Include(gr => gr.LD2)
+                .Include(gr => gr.ReceiptStatus).Where(gr => gr.ReceiptStatusId == 2);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
+        ////// GET: GamesReceipt Status = Due To Pay HttpPost and Person = 4923!
+        [HttpPost]
+        public IActionResult GamesReceiptDTPAll(GameReceipt gameReceipt)
+        {
+            var applicationDbContext = _context.GameReceipt
+                .Include(gr => gr.Game)
+                .Include(gr => gr.Game.Arena)
+                .Include(gr => gr.Game.HomeTeam)
+                .Include(gr => gr.Game.AwayTeam)
+                .Include(gr => gr.HD1)
+                .Include(gr => gr.HD2)
+                .Include(gr => gr.LD1)
+                .Include(gr => gr.LD2)
+                .Include(gr => gr.ReceiptStatus).Where(gr => gr.ReceiptStatusId == 2);
+
+            gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost + gameReceipt.HD1Other;
+            gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost + gameReceipt.HD2Other;
+            gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost + gameReceipt.LD1Other;
+            gameReceipt.LD2TotalFee = gameReceipt.LD2Fee + gameReceipt.LD2TravelKost + gameReceipt.LD2Alowens + gameReceipt.LD2LateGameKost + gameReceipt.LD2Other;
+            gameReceipt.GameTotalKost = gameReceipt.HD1TotalFee + gameReceipt.HD2TotalFee + gameReceipt.LD1TotalFee + gameReceipt.LD2TotalFee;
+            return View(gameReceipt);
+        }
+
+        //// GET: GamesReceipt Status = Paid and Person = 4923
         public async Task<IActionResult> GamesReceiptPaid()
         {
             var applicationDbContext = _context.GameReceipt
@@ -360,7 +399,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-        ////// GET: GamesReceipt Status = Paid HttpPost !
+        ////// GET: GamesReceipt Status = Paid HttpPost and Person = 4923 !
         [HttpPost]
         public IActionResult GamesReceiptPaid(GameReceipt gameReceipt)
         {
@@ -383,7 +422,122 @@ namespace TMP2019.Controllers.TMPHockeyControllers
             return View(gameReceipt);
         }
 
+        //// GET: GamesReceipt Status = Created ALL !
+        public async Task<IActionResult> GameReceiptsCreated()
+        {
+            var applicationDbContext = _context.GameReceipt
+                .Include(gr => gr.Game)
+                .Include(gr => gr.Game.Arena)
+                .Include(gr => gr.Game.HomeTeam)
+                .Include(gr => gr.Game.AwayTeam)
+                .Include(gr => gr.HD1)
+                .Include(gr => gr.HD2)
+                .Include(gr => gr.LD1)
+                .Include(gr => gr.LD2)
+                .Include(gr => gr.ReceiptStatus).Where(gr => gr.ReceiptStatusId == 1);
+            return View(await applicationDbContext.ToListAsync());
+        }
 
+        ////// GET: GamesReceipt Status = Created ALL !
+        [HttpPost]
+        public IActionResult GameReceiptsCreated(GameReceipt gameReceipt)
+        {
+            var applicationDbContext = _context.GameReceipt
+                .Include(gr => gr.Game)
+                .Include(gr => gr.Game.Arena)
+                .Include(gr => gr.Game.HomeTeam)
+                .Include(gr => gr.Game.AwayTeam)
+                .Include(gr => gr.HD1)
+                .Include(gr => gr.HD2)
+                .Include(gr => gr.LD1)
+                .Include(gr => gr.LD2)
+                .Include(gr => gr.ReceiptStatus).Where(gr => gr.ReceiptStatusId == 1);
+
+            gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost + gameReceipt.HD1Other;
+            gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost + gameReceipt.HD2Other;
+            gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost + gameReceipt.LD1Other;
+            gameReceipt.LD2TotalFee = gameReceipt.LD2Fee + gameReceipt.LD2TravelKost + gameReceipt.LD2Alowens + gameReceipt.LD2LateGameKost + gameReceipt.LD2Other;
+            gameReceipt.GameTotalKost = gameReceipt.HD1TotalFee + gameReceipt.HD2TotalFee + gameReceipt.LD1TotalFee + gameReceipt.LD2TotalFee;
+            return View(gameReceipt);
+        }
+
+        //// GET: GamesReceipt Status = Due To Pay ALL !
+        public async Task<IActionResult> GameReceiptsDTP()
+        {
+            var applicationDbContext = _context.GameReceipt
+                .Include(gr => gr.Game)
+                .Include(gr => gr.Game.Arena)
+                .Include(gr => gr.Game.HomeTeam)
+                .Include(gr => gr.Game.AwayTeam)
+                .Include(gr => gr.HD1)
+                .Include(gr => gr.HD2)
+                .Include(gr => gr.LD1)
+                .Include(gr => gr.LD2)
+                .Include(gr => gr.ReceiptStatus).Where(gr => gr.ReceiptStatusId == 2);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
+        ////// GET: GamesReceipt Status = Due To Pay ALL !
+        [HttpPost]
+        public IActionResult GameReceiptsDTP(GameReceipt gameReceipt)
+        {
+            var applicationDbContext = _context.GameReceipt
+                .Include(gr => gr.Game)
+                .Include(gr => gr.Game.Arena)
+                .Include(gr => gr.Game.HomeTeam)
+                .Include(gr => gr.Game.AwayTeam)
+                .Include(gr => gr.HD1)
+                .Include(gr => gr.HD2)
+                .Include(gr => gr.LD1)
+                .Include(gr => gr.LD2)
+                .Include(gr => gr.ReceiptStatus).Where(gr => gr.ReceiptStatusId == 2);
+
+            gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost + gameReceipt.HD1Other;
+            gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost + gameReceipt.HD2Other;
+            gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost + gameReceipt.LD1Other;
+            gameReceipt.LD2TotalFee = gameReceipt.LD2Fee + gameReceipt.LD2TravelKost + gameReceipt.LD2Alowens + gameReceipt.LD2LateGameKost + gameReceipt.LD2Other;
+            gameReceipt.GameTotalKost = gameReceipt.HD1TotalFee + gameReceipt.HD2TotalFee + gameReceipt.LD1TotalFee + gameReceipt.LD2TotalFee;
+            return View(gameReceipt);
+        }
+
+        //// GET: GamesReceipt Status = Paid ALL !
+        public async Task<IActionResult> GameReceiptsPaid()
+        {
+            var applicationDbContext = _context.GameReceipt
+                .Include(gr => gr.Game)
+                .Include(gr => gr.Game.Arena)
+                .Include(gr => gr.Game.HomeTeam)
+                .Include(gr => gr.Game.AwayTeam)
+                .Include(gr => gr.HD1)
+                .Include(gr => gr.HD2)
+                .Include(gr => gr.LD1)
+                .Include(gr => gr.LD2)
+                .Include(gr => gr.ReceiptStatus).Where(gr => gr.ReceiptStatusId == 3);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
+        ////// GET: GamesReceipt Status = Paid ALL !
+        [HttpPost]
+        public IActionResult GameReceiptPaid(GameReceipt gameReceipt)
+        {
+            var applicationDbContext = _context.GameReceipt
+                .Include(gr => gr.Game)
+                .Include(gr => gr.Game.Arena)
+                .Include(gr => gr.Game.HomeTeam)
+                .Include(gr => gr.Game.AwayTeam)
+                .Include(gr => gr.HD1)
+                .Include(gr => gr.HD2)
+                .Include(gr => gr.LD1)
+                .Include(gr => gr.LD2)
+                .Include(gr => gr.ReceiptStatus).Where(gr => gr.ReceiptStatusId == 3);
+
+            gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost + gameReceipt.HD1Other;
+            gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost + gameReceipt.HD2Other;
+            gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost + gameReceipt.LD1Other;
+            gameReceipt.LD2TotalFee = gameReceipt.LD2Fee + gameReceipt.LD2TravelKost + gameReceipt.LD2Alowens + gameReceipt.LD2LateGameKost + gameReceipt.LD2Other;
+            gameReceipt.GameTotalKost = gameReceipt.HD1TotalFee + gameReceipt.HD2TotalFee + gameReceipt.LD1TotalFee + gameReceipt.LD2TotalFee;
+            return View(gameReceipt);
+        }
 
         private bool GameReceiptExists(int id)
         {

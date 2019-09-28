@@ -112,13 +112,13 @@ namespace TMP2019.Models.DataModels.AccountingModels.DataModels
         [Display(Name = "Travel")]
         [DataType(DataType.Currency)]
         public int LD2TravelKost { get; set; } = 0;
-        [Display(Name = "Alowens")]
+        [Display(Name = "Alowance")]
         [DataType(DataType.Currency)]
         public int LD2Alowens { get; set; } = 0;
         [Display(Name = "Lategame")]
         [DataType(DataType.Currency)]
         public int LD2LateGameKost { get; set; } = 0;
-        [Display(Name = "Lategame")]
+        [Display(Name = "Other")]
         [DataType(DataType.Currency)]
         public int LD2Other { get; set; } = 0;
         [Display(Name = "Total")]

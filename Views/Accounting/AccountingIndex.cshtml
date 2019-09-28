@@ -6,7 +6,16 @@
 <h1>Game Receipts</h1>
 
 <ul class="navbar-nav flex-grow-1">
-       
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="GameReceipts" asp-action="GameReceiptsCreated">Game Receipts All Status Created !</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="GameReceipts" asp-action="GamesReceiptDTPAll">Game Receipts All Status Due To Pay !</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="GameReceipts" asp-action="GameReceiptsPaid">Game Receipts All Status Paid !</a>
+    </li>
     <li class="nav-item">
         <a class="nav-link text-dark" asp-area="" asp-controller="GameReceipts" asp-action="GameReceiptCreated">Game Receipts POREST  Status Created !</a>
     </li>
@@ -21,11 +30,5 @@
 <h1>Referee Fees Handling</h1>
 <ul class="navbar-nav flex-grow-1">
 
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="RefFees" asp-action="Index">Referee Fees</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="FeeCategories" asp-action="Index">Referee Fee Categories</a>
-    </li>
     
 </ul>

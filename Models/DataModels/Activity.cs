@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TMP2019.Models.DataModels.TMPHockeyModels;
 
 namespace TMP2019.Models.DataModels
 {
@@ -30,5 +31,8 @@ namespace TMP2019.Models.DataModels
         public ActivityType ActivityType { get; set; }
 
         public ICollection<Person> People { get; set; }
+
+
+        public ICollection<Game> Games {get; set;}
     }
 }
