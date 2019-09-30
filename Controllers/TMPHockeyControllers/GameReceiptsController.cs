@@ -72,6 +72,7 @@ namespace TMP2019.Controllers.TMPHockeyControllers
                 .Include(gr => gr.Game.Arena)
                 .Include(gr => gr.Game.HomeTeam)
                 .Include(gr => gr.Game.AwayTeam)
+                .Include(gr => gr.Game.GameCategory)
                 .Include(gr => gr.HD1)
                 .Include(gr => gr.HD2)
                 .Include(gr => gr.LD1)
@@ -466,6 +467,8 @@ namespace TMP2019.Controllers.TMPHockeyControllers
         {
             var applicationDbContext = _context.GameReceipt
                 .Include(gr => gr.Game)
+                .Include(gr => gr.Game.GameCategory.GameCategoryName)
+                .Include(gr => gr.Game.GameDateTime)
                 .Include(gr => gr.Game.Arena)
                 .Include(gr => gr.Game.HomeTeam)
                 .Include(gr => gr.Game.AwayTeam)
