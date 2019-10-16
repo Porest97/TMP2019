@@ -1,0 +1,79 @@
+﻿@model TMP2019.Controllers.PoolGamesControllers.DataModels.PoolGameReceipt
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>PoolGameReceipt</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Arena)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Arena.ArenaName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HD1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HD1.CName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HD1Fee)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HD1Fee)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HD1TravelKost)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HD1TravelKost)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HD1Alowens)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HD1Alowens)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HD1LateGameKost)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HD1LateGameKost)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HD1Other)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HD1Other)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HD1TotalFee)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HD1TotalFee)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Signature)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Signature)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

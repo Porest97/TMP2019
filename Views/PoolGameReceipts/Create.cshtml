@@ -1,0 +1,73 @@
+﻿@model TMP2019.Controllers.PoolGamesControllers.DataModels.PoolGameReceipt
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>PoolGameReceipt</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ArenaId" class="control-label"></label>
+                <select asp-for="ArenaId" class="form-control" asp-items="ViewBag.ArenaId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonId" class="control-label"></label>
+                <select asp-for="PersonId" class="form-control" asp-items="ViewBag.PersonId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="HD1Fee" class="control-label"></label>
+                <input asp-for="HD1Fee" class="form-control" />
+                <span asp-validation-for="HD1Fee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HD1TravelKost" class="control-label"></label>
+                <input asp-for="HD1TravelKost" class="form-control" />
+                <span asp-validation-for="HD1TravelKost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HD1Alowens" class="control-label"></label>
+                <input asp-for="HD1Alowens" class="form-control" />
+                <span asp-validation-for="HD1Alowens" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HD1LateGameKost" class="control-label"></label>
+                <input asp-for="HD1LateGameKost" class="form-control" />
+                <span asp-validation-for="HD1LateGameKost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HD1Other" class="control-label"></label>
+                <input asp-for="HD1Other" class="form-control" />
+                <span asp-validation-for="HD1Other" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HD1TotalFee" class="control-label"></label>
+                <input asp-for="HD1TotalFee" class="form-control" />
+                <span asp-validation-for="HD1TotalFee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Signature" class="control-label"></label>
+                <input asp-for="Signature" class="form-control" />
+                <span asp-validation-for="Signature" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

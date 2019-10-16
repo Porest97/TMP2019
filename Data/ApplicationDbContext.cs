@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using TMP2019.Models.DataModels;
 using TMP2019.Models.DataModels.TMPHockeyModels;
 using TMP2019.Models.DataModels.AccountingModels.DataModels;
+using TMP2019.Controllers.PoolGamesControllers.DataModels;
 
 namespace TMP2019.Data
 {
@@ -42,5 +43,7 @@ namespace TMP2019.Data
         public DbSet<TMP2019.Models.DataModels.AccountingModels.DataModels.FeeCategory> FeeCategory { get; set; }
         public DbSet<TMP2019.Models.DataModels.GamesToActivity> GamesToActivity { get; set; }
         public DbSet<TMP2019.Models.DataModels.PeopleToActivity> PeopleToActivity { get; set; }
+        public DbSet<TMP2019.Controllers.PoolGamesControllers.DataModels.PoolGameReceipt> PoolGameReceipt { get; set; }
+        public DbSet<TMP2019.Controllers.PoolGamesControllers.DataModels.PoolGame> PoolGame { get; set; }
     }
 }

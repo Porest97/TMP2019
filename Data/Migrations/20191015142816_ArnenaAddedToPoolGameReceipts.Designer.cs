@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TMP2019.Data;
 
 namespace TMP2019.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191015142816_ArnenaAddedToPoolGameReceipts")]
+    partial class ArnenaAddedToPoolGameReceipts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -182,47 +184,6 @@ namespace TMP2019.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("TMP2019.Controllers.PoolGamesControllers.DataModels.PoolGame", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("ArenaId");
-
-                    b.Property<int?>("GameCategoryId");
-
-                    b.Property<int?>("GameId");
-
-                    b.Property<int?>("GameId1");
-
-                    b.Property<int?>("PersonId");
-
-                    b.Property<int?>("PersonId1");
-
-                    b.Property<DateTime>("PoolGameDateTime");
-
-                    b.Property<int?>("TeamId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ArenaId");
-
-                    b.HasIndex("GameCategoryId");
-
-                    b.HasIndex("GameId");
-
-                    b.HasIndex("GameId1");
-
-                    b.HasIndex("PersonId");
-
-                    b.HasIndex("PersonId1");
-
-                    b.HasIndex("TeamId");
-
-                    b.ToTable("PoolGame");
                 });
 
             modelBuilder.Entity("TMP2019.Controllers.PoolGamesControllers.DataModels.PoolGameReceipt", b =>
@@ -1082,37 +1043,6 @@ namespace TMP2019.Data.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("TMP2019.Controllers.PoolGamesControllers.DataModels.PoolGame", b =>
-                {
-                    b.HasOne("TMP2019.Models.DataModels.Arena", "Arena")
-                        .WithMany()
-                        .HasForeignKey("ArenaId");
-
-                    b.HasOne("TMP2019.Models.DataModels.TMPHockeyModels.GameCategory", "GameCategory")
-                        .WithMany()
-                        .HasForeignKey("GameCategoryId");
-
-                    b.HasOne("TMP2019.Models.DataModels.TMPHockeyModels.Game", "Game1")
-                        .WithMany()
-                        .HasForeignKey("GameId");
-
-                    b.HasOne("TMP2019.Models.DataModels.TMPHockeyModels.Game", "Game2")
-                        .WithMany()
-                        .HasForeignKey("GameId1");
-
-                    b.HasOne("TMP2019.Models.DataModels.Person", "HD1")
-                        .WithMany()
-                        .HasForeignKey("PersonId");
-
-                    b.HasOne("TMP2019.Models.DataModels.Person", "HD2")
-                        .WithMany()
-                        .HasForeignKey("PersonId1");
-
-                    b.HasOne("TMP2019.Models.DataModels.Team", "Team")
-                        .WithMany()
-                        .HasForeignKey("TeamId");
                 });
 
             modelBuilder.Entity("TMP2019.Controllers.PoolGamesControllers.DataModels.PoolGameReceipt", b =>

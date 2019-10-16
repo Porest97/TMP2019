@@ -542,6 +542,43 @@ namespace TMP2019.Controllers.TMPHockeyControllers
             return View(gameReceipt);
         }
 
+        //// GET: GamesReceipt Status = HAHC !
+        public async Task<IActionResult> GRsHAHC()
+        {
+            var applicationDbContext = _context.GameReceipt
+                .Include(gr => gr.Game)
+                .Include(gr => gr.Game.Arena)
+                .Include(gr => gr.Game.HomeTeam)
+                .Include(gr => gr.Game.AwayTeam)
+                .Include(gr => gr.HD1)
+                .Include(gr => gr.HD2)
+                .Include(gr => gr.LD1)
+                .Include(gr => gr.LD2)
+                .Include(gr => gr.ReceiptStatus).Where(gr => gr.ReceiptStatusId == 5);
+            return View(await applicationDbContext.ToListAsync());
+        }
+        ////// GET: GamesReceipt Status = HAHC !
+        [HttpPost]
+        public IActionResult GRsHAHC(GameReceipt gameReceipt)
+        {
+            var applicationDbContext = _context.GameReceipt
+                .Include(gr => gr.Game)
+                .Include(gr => gr.Game.Arena)
+                .Include(gr => gr.Game.HomeTeam)
+                .Include(gr => gr.Game.AwayTeam)
+                .Include(gr => gr.HD1)
+                .Include(gr => gr.HD2)
+                .Include(gr => gr.LD1)
+                .Include(gr => gr.LD2)
+                .Include(gr => gr.ReceiptStatus).Where(gr => gr.ReceiptStatusId == 5);
+
+            gameReceipt.HD1TotalFee = gameReceipt.HD1Fee + gameReceipt.HD1TravelKost + gameReceipt.HD1Alowens + gameReceipt.HD1LateGameKost + gameReceipt.HD1Other;
+            gameReceipt.HD2TotalFee = gameReceipt.HD2Fee + gameReceipt.HD2TravelKost + gameReceipt.HD2Alowens + gameReceipt.HD2LateGameKost + gameReceipt.HD2Other;
+            gameReceipt.LD1TotalFee = gameReceipt.LD1Fee + gameReceipt.LD1TravelKost + gameReceipt.LD1Alowens + gameReceipt.LD1LateGameKost + gameReceipt.LD1Other;
+            gameReceipt.LD2TotalFee = gameReceipt.LD2Fee + gameReceipt.LD2TravelKost + gameReceipt.LD2Alowens + gameReceipt.LD2LateGameKost + gameReceipt.LD2Other;
+            gameReceipt.GameTotalKost = gameReceipt.HD1TotalFee + gameReceipt.HD2TotalFee + gameReceipt.LD1TotalFee + gameReceipt.LD2TotalFee;
+            return View(gameReceipt);
+        }
         private bool GameReceiptExists(int id)
         {
             return _context.GameReceipt.Any(e => e.Id == id);

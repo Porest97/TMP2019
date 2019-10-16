@@ -1,0 +1,67 @@
+﻿@model TMP2019.Controllers.PoolGamesControllers.DataModels.PoolGame
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>PoolGame</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PoolGameDateTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PoolGameDateTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GameCategory)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GameCategory.GameCategoryName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Team)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Team.TeamName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Arena)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Arena.ArenaName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Game1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Game1.Teams)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HD1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HD1.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Game2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Game2.Teams)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HD2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HD2.FullName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
